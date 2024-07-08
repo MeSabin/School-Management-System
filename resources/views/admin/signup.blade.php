@@ -11,7 +11,7 @@
   <div class="bg-white px-5 pb-5 pt-1 rounded-xl shadow-md w-[330px]">
     <h2 class="text-xl text-center font-medium mb-3 text-purple-600">Register Tutor</h2>
 
-    <form action="" method="post">
+    <form action="{{ route('teachers.store')}}" method="post">
       @csrf
       <div class="mb-2">
         <label class="block text-gray-700 text-sm font-medium">Full Name</label>
