@@ -8,8 +8,8 @@
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-100">
   <img src="{{ asset('images/signup.svg') }}" alt="" class="w-6/12 h-[400px]">
-  <div class="bg-white px-5 pb-5 pt-1 rounded-xl shadow-md w-[330px]">
-    <h2 class="text-xl text-center font-medium mb-3 text-purple-600">Register Tutor</h2>
+  <div class="bg-white px-5 pb-5 pt-2 rounded-xl shadow-custom w-[330px]">
+    <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Register Tutor</h2>
 
     <form action="{{ route('teachers.store')}}" method="post">
       @csrf
