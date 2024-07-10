@@ -35,7 +35,7 @@
     </aside>
     <div class="flex-1 p-6 pt-3">
       <header class="flex justify-between items-center bg-white shadow-md p-4 rounded-lg">
-        <h2 class="text-xl font-bold">Dashboard</h2>
+        <h2 class="text-xl font-medium text-purple-500">Admin Dashboard</h2>
         <div class="flex items-center space-x-4">
           <span class="text-gray-700">User Name</span>
           <img src="https://via.placeholder.com/40" alt="User Avatar" class="rounded-full w-10 h-10">

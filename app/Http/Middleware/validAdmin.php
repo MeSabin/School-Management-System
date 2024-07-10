@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class validTeacher
+class validAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,10 @@ class validTeacher
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('web')->check()) {
-            // echo "You are authenticated";
-            return $next($request);  
+        if (Auth::guard('admin')->check()) {
+            return $next($request);
+        } else {
+            return redirect()->route('loginAdmin');
         }
-        else{
-            return redirect()->route('loginPage');
-        }
-      
     }
 }
