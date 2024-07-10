@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Teacher;
 
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class validAdmin
+class validTeacher
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,13 @@ class validAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('admin')->check()) {
-            return $next($request);
-        } else {
-            return redirect()->route('loginAdmin');
+        if (Auth::guard('web')->check()) {
+            // echo "You are authenticated";
+            return $next($request);  
         }
+        else{
+            return redirect()->route('loginPage');
+        }
+      
     }
 }

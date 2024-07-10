@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Admin;
+use Illuminate\App\Models\Admin\Admin;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 
 class validateAdmin extends Controller
 {

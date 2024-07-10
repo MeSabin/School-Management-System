@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\validTeacher;
-use App\Http\Middleware\validAdmin;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\validateLogin;
-use App\Http\Controllers\validateAdmin;
+use App\Http\Middleware\Teacher\validTeacher;
+use App\Http\Middleware\Admin\validAdmin;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Teacher\validateLogin;
+use App\Http\Controllers\Admin\validateAdmin;
 
 
 Route::get('/', function () {
