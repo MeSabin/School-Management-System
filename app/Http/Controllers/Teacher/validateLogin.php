@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\App\Models\Teacher\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 class validateLogin extends Controller
 {
     public function Login(Request $request){
@@ -14,6 +15,7 @@ class validateLogin extends Controller
         ],
         [
             'email.required' => 'Email is required*',
+            'email.email' => 'Email should be valid email address*',
             'password.required' => 'Password is required*',
         ]
     );
@@ -23,6 +25,7 @@ class validateLogin extends Controller
 
         }
         else{
+            session()->flash('loginError', "Invalid credentials provided!");
             return redirect()->route('teacherLogin');
         }
     }

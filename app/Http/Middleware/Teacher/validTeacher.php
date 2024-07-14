@@ -16,12 +16,12 @@ class validTeacher
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('web')->check()) {
-            // echo "You are authenticated";
-            return $next($request);  
+        if (!Auth::guard('web')->check()) {
+            return redirect()->route('teacherLogin');
+           
         }
         else{
-            return redirect()->route('teacherLogin');
+            return $next($request);  
         }
       
     }
