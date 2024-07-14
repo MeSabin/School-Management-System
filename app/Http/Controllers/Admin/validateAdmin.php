@@ -22,31 +22,23 @@ class validateAdmin extends Controller
     );
 
         if(Auth::guard('admin')->attempt($credentials)) {
+
             return redirect()->route('adminDash');
         }
         else{
-            return redirect()->route('loginAdmin');
+            return redirect()->route('adminLogin');
         }
-        
-        // $admin = Admin::where('email',$request->input('email'))->first();
-        // if($admin && Hash::check($request->input('password'), $admin->password)){
-        //     return redirect()->route('adminDash');
-        // }
-        // else{
-        //    return redirect()->route('loginAdmin');
-        // }
     }
 
     public function adminDashboard(){
-
-            return view('admin.dashboard');
+        header('Location: admin.dashboard');
+        return view('admin.dashboard');
 
     }
     public function Logout()
     {
-        // Logout current user
-        Auth::guard('admin')->logout(); // Ensure admin guard is also cleared
-        return redirect()->route('loginAdmin');
+        Auth::guard('admin')->logout(); 
+        return redirect()->route('adminLogin');
     }
     
 }

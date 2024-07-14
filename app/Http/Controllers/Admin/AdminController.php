@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\App\Models\Teacher\Teacher;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+
 class AdminController extends Controller
 {
     /**
@@ -21,7 +22,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin/signup');
+        // return view('admin/signup');
+        return redirect()->route('adminSignup');
     }
 
     /**

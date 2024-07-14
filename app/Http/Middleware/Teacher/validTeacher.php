@@ -21,7 +21,7 @@ class validTeacher
             return $next($request);  
         }
         else{
-            return redirect()->route('loginPage');
+            return redirect()->route('teacherLogin');
         }
       
     }

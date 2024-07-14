@@ -18,8 +18,9 @@ class validAdmin
     {
         if (Auth::guard('admin')->check()) {
             return $next($request);
+            
         } else {
-            return redirect()->route('loginAdmin');
+            return redirect()->route('adminLogin');
         }
     }
 }

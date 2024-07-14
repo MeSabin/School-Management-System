@@ -13,7 +13,7 @@
     @if(Session::has('error'))
       {{Session::get('error')}}
     @endif
-    <form action="{{ route('adminLogin')}}" method="post">
+    <form action="{{ route('checkAdminLogin')}}" method="post">
       @csrf
       <div class="mb-3 " >
         <label class="block text-gray-700 text-sm font-medium">Email</label>

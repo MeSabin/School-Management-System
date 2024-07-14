@@ -5,37 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   @vite('resources/css/app.css')
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <style>
-    .active{
-      background-color: red;
+
+    #sidebar.active:hover {
+      width: 256px;
     }
+    #sidebar.active {
+      width: 80px;
+    }
+    #sidebar.active li a span {
+      display: none;
+    }
+    #sidebar.active:hover li a span {
+      display: block;
+    }
+    #sidebar.active h2 {
+      display: none;
+    }
+    #sidebar.active:hover h2 {
+      display: block;
+    }
+
   </style>
 </head>
 <body class="bg-gray-100">
 
   <div class="flex min-h-screen">
-    <aside class="w-64 bg-purple-600 text-white pr-3 pl-3">
-      <div class="p-4">
-        <h1 class="text-xl bg-purple-400 py-1 rounded-2xl text-center font-bold">Dashboard</h1>
+    <aside id="sidebar" class="w-64 bg-purple-500 text-white pr-3 pl-3 transition-all duration-700 z-10000">     
+      <div class="pt-3 pb-3 flex items-center ">
+        <img src="{{ asset('images/school.png')}}" alt="Image not found." class="w-16 rounded-full mr-3">
+        <h2 class="text-lg font-bold">E-School</h2>
       </div>
-      {{-- <nav class="mt-4">
-        <a href="/dashboard" class="block py-2.5 px-4 hover:bg-purple-400">Home</a>
-        <a href="/profile" class="block py-2.5 px-4 hover:bg-purple-400">Profile</a>
-        <a href="/settings" class="block py-2.5 px-4 hover:bg-purple-400">Settings</a>
-        <a href="/logout" class="block py-2.5 px-4 hover:bg-purple-400">Logout</a>
-      </nav> --}}
       <nav class="mt-4">
         <ul>
-          <a href="/dashboard" class="link block py-2.5 px-4 bg-purple-400 active:bg-purple-400 rounded-md hover:bg-purple-400"><li>Home</li></a>
-          <a href="/dashboard" class="link block py-2.5 px-4 mt-1 rounded-md active:bg-purple-400 hover:bg-purple-400"><li>Profile</li></a>
-          <a href="/settings" class="block py-2.5 px-4 mt-1 rounded-md hover:bg-purple-400"><li>Settings</li></a>
-          <a href="/logout" class="block py-2.5 px-4 mt-1 rounded-md hover:bg-purple-400"><li>Logout</li></a>
+          <li>
+            <a href="#" class=" flex justify-start py-2.5 mb-2 px-4 bg-purple-400 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <img src="{{asset('images/dashboard.png')}}" alt="" class="w-[27px]">
+              {{-- <box-icon class="invert" name='home-alt'></box-icon> --}}
+              <span class="pt-1">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="/studentList" class=" flex justify-start py-2.5 mb-2 px-4 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <img src="{{asset('images/students.png')}}" alt="" class="w-6">
+              <span class="">Students</span>
+            </a>
+          </li>
+          <li>
+            <a href="/assignments" class=" flex justify-start py-2.5 mb-2 px-4 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <img src="{{asset('images/assignment.png')}}" alt="" class="w-6">
+              <span class="">Assignments</span>
+            </a>
+          </li>
+          <li>
+            <a href="/notifications" class=" flex justify-start py-2.5 mb-2 px-4 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <img src="{{asset('images/notification.png')}}" alt="" class="w-6">
+              <span class="">Notifications</span>
+            </a>
+          </li>
+          <li>
+            <a href="/logout" class=" flex justify-start py-2.5 mb-2 px-4 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <img src="{{asset('images/logout.png')}}" alt="" class="w-6">
+              <span class="">Logout</span>
+            </a>
+          </li>
         </ul>
       </nav>
     </aside>
-    <div class="flex-1 p-6 pt-3">
-      <header class="flex justify-between items-center bg-white shadow-md p-4 rounded-lg">
-        <h2 class="text-xl font-medium text-purple-500"> Teacher Dashboard</h2>
+    <div class="flex-1 p-6 pt-3" id="mainContent">
+      <header class="relative flex justify-between items-center bg-white shadow-md p-4 rounded-lg">
+        <img src="{{asset('images/menu.png')}}" alt="" class=" menuicon w-6 cursor-pointer absolute left-3 invert" id="menu">
+        <h2 class="text-xl font-medium text-purple-500 pl-10"> Teacher Dashboard</h2>
         <div class="flex items-center space-x-4">
           <span class="text-gray-700">User Name</span>
           <img src="https://via.placeholder.com/40" alt="User Avatar" class="rounded-full w-10 h-10">
@@ -59,18 +100,14 @@
       </main>
     </div>
   </div>
-
+  
   <script>
-   var links = document.querySelectorAll(".link");
-for(let link of links){
-  link.addEventListener("click", function(e){
-    for(let inlink of links){
-      inlink.classList.remove("active");
-    }
-    e.target.classList.add("active");
-  });
-}
+    let menu = document.querySelector('#menu');
+    let sidebar = document.querySelector('#sidebar')
 
+    menu.onclick = function() {
+      sidebar.classList.toggle('active');
+    }
   </script>
 
 </body>

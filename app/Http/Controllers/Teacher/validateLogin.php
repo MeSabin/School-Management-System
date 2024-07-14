@@ -19,23 +19,21 @@ class validateLogin extends Controller
     );
 
         if(Auth::guard('web')->attempt($credentials)) {
-            return redirect()->route('dashboard');
-            // return view('teachers/dashboard');
+            return redirect()->route('teacherDash');
 
         }
         else{
-            return view('teachers/login');
+            return redirect()->route('teacherLogin');
         }
-        
     }
 
     public function teacherDashboard(){
+        
             return view('teachers.dashboard');
-
     }
     
     public function Logout(){
         Auth::guard('web')->logout();
-        return redirect()->route('loginPage');
+        return redirect()->route('teacherLogin');
     }
 }
