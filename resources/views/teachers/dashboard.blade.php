@@ -1,4 +1,4 @@
-@extends('mainDashLayout')
+@extends('teachers.teacherLayout')
   @section('title')
       Teacher Dashboard
   @endsection

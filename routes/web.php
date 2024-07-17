@@ -17,7 +17,6 @@ use App\Http\Controllers\Admin\validateAdmin;
 Route::view('/', 'teachers/login')->name('teacherLogin')->middleware(PreventLoginWithoutLogout::class);
 Route::view('/admin', 'admin/login')->name('adminLogin');
 Route::view('/signup', 'admin/signup')->name('adminSingup');
-Route::view('/studentList', 'teachers/studentList')->name('adminSingup');
 Route::view('/layout', 'mainDashLayout')->name('layout');
 
 // Route::get('/admin', function(){
@@ -34,6 +33,7 @@ Route::resource('teachers', AdminController::class);
 Route::post('/admin/login', [validateAdmin::class, 'loginAdmin'])->name('checkAdminLogin');
 Route::get('/admin/dashboard',[validateAdmin::class, 'adminDashboard'])->name('adminDash')->middleware(validAdmin::class);
 Route::get('/admin/logout',[validateAdmin::class, 'Logout'])->name('logoutAdmin');
+Route::view('/admin/teachersList','admin/viewTeachers')->name('teachersList')->middleware(validAdmin::class);
 
 Route::post('/teacher/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');
 Route::get('/teacher/dashboard',[validateLogin::class, 'teacherDashboard'])->name('teacherDash')->middleware(validTeacher::class, PreventBackHistory::class);

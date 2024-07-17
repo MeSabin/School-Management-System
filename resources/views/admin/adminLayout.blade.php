@@ -47,31 +47,31 @@
             <a href="#" class=" flex justify-start py-2 mb-2 px-3 bg-purple-400 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
               <img src="{{asset('images/dashboard.png')}}" alt="" class="w-7 mr-3">
               {{-- <box-icon class="invert" name='home-alt'></box-icon> --}}
-              <span class="pt-1">Dashboard</span>
+              <span class="pt-1 text-gray-100">Dashboard</span>
             </a>
           </li>
           <li>
-            <a href="/studentList" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="{{ route('teachersList')}}" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
               <img src="{{asset('images/students.png')}}" alt="" class="w-6 pl-1 mr-4">
-              <span class="">Teachers</span>
+              <span class="text-gray-100">Teachers</span>
             </a>
           </li>
           <li>
             <a href="/assignments" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
               <img src="{{asset('images/assignment.png')}}" alt="" class="w-6 ml-[1px] mr-4">
-              <span class="">Curriculums</span>
+              <span class="text-gray-100">Curriculums</span>
             </a>
           </li>
           <li>
             <a href="/notifications" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
               <img src="{{asset('images/notification.png')}}" alt="" class="w-6 mr-4">
-              <span class="">Notifications</span>
+              <span class="text-gray-100">Notifications</span>
             </a>
           </li>
           <li>
             <a href="/teacher/logout" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
               <img src="{{asset('images/logout.png')}}" alt="" class="w-6 ml-1 mr-3">
-              <span class="">Logout</span>
+              <span class="text-gray-100">Logout</span>
             </a>
           </li>
         </ul>
