@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Teacher\validTeacher;
 use App\Http\Middleware\Admin\validAdmin;
 use App\Http\Middleware\PreventBackHistory;
+use App\Http\Middleware\PreventLoginWithoutLogout;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Teacher\validateLogin;
 use App\Http\Controllers\Admin\validateAdmin;
@@ -13,10 +14,11 @@ use App\Http\Controllers\Admin\validateAdmin;
 //     return view('teachers/login');
 // })->name('teacherLogin');
 
-Route::view('/', 'teachers/login')->name('teacherLogin')->middleware(PreventBackHistory::class);
+Route::view('/', 'teachers/login')->name('teacherLogin')->middleware(PreventLoginWithoutLogout::class);
 Route::view('/admin', 'admin/login')->name('adminLogin');
 Route::view('/signup', 'admin/signup')->name('adminSingup');
 Route::view('/studentList', 'teachers/studentList')->name('adminSingup');
+Route::view('/layout', 'mainDashLayout')->name('layout');
 
 // Route::get('/admin', function(){
 //     return view('admin/login');

@@ -45,7 +45,7 @@
 <body class="flex items-center justify-center min-h-screen bg-gray-100">
   
   @if (session('loginError'))
-    <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-red-400 text-red-500 pr-8 pl-2 py-4 rounded-sm">
+    <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-red-400 text-red-400 pr-8 pl-2 py-4 rounded-sm">
         <img src="{{asset('images/error.png')}}" alt="" class="w-6 mr-2">
         <h3>{{session('loginError')}}</h3>
     </div>
