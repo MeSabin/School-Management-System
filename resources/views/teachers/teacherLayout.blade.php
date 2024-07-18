@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
   @vite('resources/css/app.css')
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <style>
 
     #sidebar.active:hover {
@@ -22,6 +23,9 @@
     #sidebar.active h2 {
       display: none;
     }
+    #sidebar.active .material-symbols-outlined {
+      display: block;
+    }
     #sidebar.active:hover h2 {
       display: block;
     }
@@ -29,6 +33,10 @@
       display: flex;
       justify-content: center;
     }
+    #sidebar.active .logoDiv img {
+      margin-left: 0;
+    }
+
 
   </style>
 </head>
@@ -37,40 +45,48 @@
   <div class="flex min-h-screen">
     <aside id="sidebar" class="w-64 bg-purple-500 text-white pr-3 pl-3 transition-all duration-700 z-10000">     
       <div class="logoDiv pt-3 pb-3 flex items-center cursor-pointer">
-        <img src="{{ asset('images/computer.png')}}" alt="Image not found." class="invert w-10 ">
-        {{-- <box-icon type='solid' name='school' class="invert "></box-icon> --}}
+        <img src="{{ asset('images/computer.png')}}" alt="Image not found." class="invert w-10 ml-2">
         <h2 class="text-lg ml-3 font-bold">𝒞𝓁𝒶𝓈𝓈𝐿𝒾𝓃𝓀</h2>
       </div>
       <nav class="mt-4">
         <ul>
           <li>
-            <a href="#" class=" flex justify-start py-2 mb-2 px-3 bg-purple-400 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
-              <img src="{{asset('images/dashboard.png')}}" alt="" class="w-7 mr-3">
-              {{-- <box-icon class="invert" name='home-alt'></box-icon> --}}
-              <span class="pt-1 text-gray-100">Dashboard</span>
+            <a href="#" class="flex py-2 mb-2 px-3 bg-purple-400 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <span class="ml-1 mr-4 material-symbols-outlined">
+                home
+              </span>
+              <span class="text-gray-100">Dashboard</span>
             </a>
           </li>
           <li>
-            <a href="/studentList" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
-              <img src="{{asset('images/students.png')}}" alt="" class="w-6 pl-1 mr-4">
+            <a href="/studentList" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <span class="ml-1 mr-4 material-symbols-outlined">
+                group
+              </span>
               <span class="text-gray-100">Teachers</span>
             </a>
           </li>
           <li>
-            <a href="/assignments" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
-              <img src="{{asset('images/assignment.png')}}" alt="" class="w-6 ml-[1px] mr-4">
+            <a href="/assignments" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <span class="ml-1 mr-4 material-symbols-outlined">
+                assignment
+              </span>
               <span class="text-gray-100">Assignments</span>
             </a>
           </li>
           <li>
-            <a href="/notifications" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
-              <img src="{{asset('images/notification.png')}}" alt="" class="w-6 mr-4">
+            <a href="/notifications" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <span class="ml-1 mr-4 material-symbols-outlined">
+                notifications
+              </span>
               <span class="text-gray-100">Notifications</span>
             </a>
           </li>
           <li>
-            <a href="/teacher/logout" class=" flex justify-start py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
-              <img src="{{asset('images/logout.png')}}" alt="" class="w-6 ml-1 mr-3">
+            <a href="/teacher/logout" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+              <span class="ml-2 mr-3 material-symbols-outlined">
+                logout
+              </span>
               <span class="text-gray-100">Logout</span>
             </a>
           </li>

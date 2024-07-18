@@ -22,8 +22,7 @@ class validateAdmin extends Controller
     );
 
         if(Auth::guard('admin')->attempt($credentials)) {
-
-            return redirect()->route('adminDash');
+            return redirect()->route('adminDash'); 
         }
         else{
             return redirect()->route('adminLogin');
