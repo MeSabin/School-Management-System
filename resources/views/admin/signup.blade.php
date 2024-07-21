@@ -11,7 +11,7 @@
   <div class="bg-white px-5 pb-5 pt-2 rounded-xl shadow-custom w-[330px]">
     <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Register Tutor</h2>
 
-    <form action="{{ route('teachers.store')}}" method="post">
+    <form id ="teacherRegister" action="{{ route('teachers.store')}}" method="post">
       @csrf
       <div class="mb-2">
         <label class="block text-gray-700 text-sm font-medium">Full Name</label>
@@ -88,7 +88,21 @@
           @error('password')
               {{$message}}
           @enderror
+        </span>
       </div> 
+      <div class="mb-2">
+        <label class="block text-gray-700 text-sm font-medium">Profile Picture</label>
+        <input
+            type="file"
+            name="profile_picture"
+            class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('profile_picture') border-red-500 @enderror"
+        />
+        <span class="text-red-700 text-xs font-medium">
+            @error('profile_picture')
+                {{ $message }}
+            @enderror
+        </span>
+    </div>
       <button
         type="submit"
         class="w-full py-1 mt-3 bg-purple-600 text-white rounded-lg hover:bg-purple-500 duration-200"
@@ -97,5 +111,4 @@
       </button>
     </form>
   </div>
-</body>
 </html>

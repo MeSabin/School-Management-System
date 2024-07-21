@@ -30,7 +30,6 @@ class validateAdmin extends Controller
     }
 
     public function adminDashboard(){
-        header('Location: admin.dashboard');
         return view('admin.dashboard');
 
     }

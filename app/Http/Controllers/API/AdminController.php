@@ -100,7 +100,6 @@ class AdminController extends Controller
             }
 
             $userImage =Teacher::select('id','image')->where(['id'=>$id])->get();
-
             if($request->image != ''){
                 $path =public_path(). '/uploads';
 

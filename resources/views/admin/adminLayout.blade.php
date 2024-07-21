@@ -62,7 +62,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ route('teachersList')}}" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="{{ route('teachers.index')}}" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 group
               </span>

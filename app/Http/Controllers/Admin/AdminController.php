@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\App\Models\Teacher\Teacher;
+use App\Models\Teacher\Teacher;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +14,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $teachers =Teacher::all();
+        // return redirect()->route('teachers.index');
+        // return $teachers;
+        // foreach($teachers as $teacher){
+        //     echo $teacher->id;
+        //     echo $teacher->name;
+        // }
+        return view('admin/viewTeachers',compact('teachers'));
     }
 
     /**
@@ -23,7 +30,7 @@ class AdminController extends Controller
     public function create()
     {
         // return view('admin/signup');
-        return redirect()->route('adminSignup');
+        return view('admin/registerTeacher');   
     }
 
     /**
@@ -37,7 +44,8 @@ class AdminController extends Controller
             'phone'=> 'required|digits:10',
             'email' => 'required|email|unique:teachers,email',
             'role' => 'required',
-            'password' => 'required|alpha_num|min:6'
+            'password' => 'required|alpha_num|min:6',
+            'image' => 'required|mimes:jpg,png,jpeg,gif|max:7000 '
         ],
         [
             'fullName.required' => 'Full name is required*',
@@ -46,9 +54,11 @@ class AdminController extends Controller
             'email.required' => 'Email is required*',
             'email.email' => 'Email format is invalid*',
             'password.required' => 'Password is required*',
-            'password.min' => 'Password must be at least 6 chararcters*'
+            'password.min' => 'Password must be at least 6 chararcters*',
+            'image.required' => 'Please select an image*'
             
         ]);
+       echo "hello";
     
         // $teacher =new Teacher;
 
@@ -60,13 +70,22 @@ class AdminController extends Controller
 
         // $teacher->save();
 
+        $image =$request->file('image');
+        // $image =$request->image;
+        $extension =$image->extension();
+        $teacherImage =time(). '.' . $extension;
+        $image->move(public_path(). '/uploads/', $teacherImage);
+
         Teacher::create([
             'name' => $request->fullName,
             'phone' => $request->phone,
             'email' => $request->email,
-            'role' => $request->role,
-            'password' => Hash::make($request->password)
+            'role ' => $request->role,
+            'password' => Hash::make($request->password),
+            'image' => $teacherImage
         ]);
+
+        return redirect()->route('teachers.index');
     }
 
     /**
@@ -80,17 +99,47 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Teacher $teacher)
     {
-        //
-    }
+        // return view('admin/updateTeacher');
+        $teacher =Teacher::find($teacher->id);
+        return view('admin/updateTeacher', compact('teacher'));
 
+
+    }
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+ 
+        $userImage =Teacher::select('id','image')->where(['id'=>$id])->get();
+            if($request->image != ''){
+                $path =public_path('uploads/');
+
+                if($userImage[0]->image != '' && $userImage[0]->image !=null){
+                    $old_file =$path. $userImage[0]->image;
+                    if(file_exists($old_file)){
+                        unlink($old_file);
+                    }
+                }
+                $image =$request->image;
+                $extension =$image->getClientOriginalExtension();
+                $teacherImage =time(). '.' . $extension;
+                $image->move(public_path('uploads/'), $teacherImage);
+            }
+            else{  
+                $teacherImage =$userImage[0]->image;
+            }
+
+            $teacher =Teacher::where(['id'=>$id])->update([
+                'name' =>$request->name,
+                'phone' =>$request->phone,
+                'email' =>$request->email,
+                'role' =>$request->role,
+                'image' => $teacherImage,
+            ]);
+
     }
 
     /**
@@ -98,6 +147,13 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+    $teacher = Teacher::find($id);
+        $teacher->delete();
+        $imagePath = public_path('/uploads/' . $teacher->image);
+        if (file_exists($imagePath)) {
+            @unlink($imagePath);
+        }
+        return redirect()->route('teachers.index')->with('success', 'Teacher deleted successfully.');
+    } 
+
 }
