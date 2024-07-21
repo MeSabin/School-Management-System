@@ -98,7 +98,7 @@
           class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('profile_picture') border-red-500 @enderror"
       />
       <span class="text-red-700 text-xs font-medium">
-          @error('profile_picture')
+          @error('image')
               {{ $message }}
           @enderror
       </span>

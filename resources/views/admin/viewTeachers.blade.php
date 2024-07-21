@@ -24,22 +24,25 @@
                    <tbody>
                     @foreach ($teachers as $teacher)
                         <tr class="hover:bg-gray-100 border duration-200">
-                            <td class="py-2 px-4 border">{{$teacher->id}}</td>
-                            {{-- <td><img src="/uploads/${teacher.image}" class="w-18 h-14 py-1 px-4 rounded-full"/>{{$teacher->image}}</td> --}}
-                            <td class="py-2 px-4 border flex items-center justify-center">
-                                <img src="{{asset('/uploads/'. $teacher->image)}}" class="w-14 py-1 px-4 rounded-full" alt="Image"/>
+                            <td class="py-2 px-4">{{$teacher->id}}</td>
+                            <td class="py-2 px-4 flex items-center justify-center">
+                                <img src="{{asset('/uploads/'. $teacher->image)}}" class="w-10 rounded-lg border" alt="Image"/>
                             </td>
                             <td class="py-1 px-4 ">{{$teacher->name}}</td>
                             <td class="py-1 px-4 ">{{$teacher->phone}}</td>
                             <td class="py-1 px-4 ">{{$teacher->email}}</td>
                             <td class="py-1 px-4 ">{{$teacher->role}}</td>
-                            <td class="py-1 px-4  flex flex-row items-center">
-                                <a href="{{ route('teachers.edit', $teacher->id) }}" class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-700 duration-300 mr-4">Update</a>
-                                <form action="{{ route('teachers.destroy', $teacher->id)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type ="submit" class="bg-red-500 px-3 py-1 rounded text-white">Delete</button>
-                                </form>
+                            <td class="py-1 px-4 flex items-center">
+                                <div>
+                                    <a href="{{ route('teachers.edit', $teacher->id) }}" class="bg-blue-500 text-white py-1 px-2 rounded hover:bg-blue-700 duration-300 mr-4">Update</a>
+                                </div>
+                                <div>
+                                    <form action="{{ route('teachers.destroy', $teacher->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type ="submit" class="bg-red-500 px-3 py-1 rounded text-white">Delete</button>
+                                    </form>
+                                </div> 
                             </td>
                         </tr>
                         @endforeach()

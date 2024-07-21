@@ -15,12 +15,6 @@ class AdminController extends Controller
     public function index()
     {
         $teachers =Teacher::all();
-        // return redirect()->route('teachers.index');
-        // return $teachers;
-        // foreach($teachers as $teacher){
-        //     echo $teacher->id;
-        //     echo $teacher->name;
-        // }
         return view('admin/viewTeachers',compact('teachers'));
     }
 
@@ -55,10 +49,10 @@ class AdminController extends Controller
             'email.email' => 'Email format is invalid*',
             'password.required' => 'Password is required*',
             'password.min' => 'Password must be at least 6 chararcters*',
-            'image.required' => 'Please select an image*'
+            'image.required' => 'Please select an image*',
+            'image.max' => 'Image size should be less than 7 MB*'
             
         ]);
-       echo "hello";
     
         // $teacher =new Teacher;
 
@@ -70,8 +64,7 @@ class AdminController extends Controller
 
         // $teacher->save();
 
-        $image =$request->file('image');
-        // $image =$request->image;
+        $image =$request->image;
         $extension =$image->extension();
         $teacherImage =time(). '.' . $extension;
         $image->move(public_path(). '/uploads/', $teacherImage);
@@ -80,7 +73,7 @@ class AdminController extends Controller
             'name' => $request->fullName,
             'phone' => $request->phone,
             'email' => $request->email,
-            'role ' => $request->role,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
             'image' => $teacherImage
         ]);
@@ -101,7 +94,6 @@ class AdminController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        // return view('admin/updateTeacher');
         $teacher =Teacher::find($teacher->id);
         return view('admin/updateTeacher', compact('teacher'));
 
@@ -113,33 +105,88 @@ class AdminController extends Controller
     public function update(Request $request, string $id)
     {
  
-        $userImage =Teacher::select('id','image')->where(['id'=>$id])->get();
-            if($request->image != ''){
-                $path =public_path('uploads/');
+        // $teacher =Teacher::find($id);
 
-                if($userImage[0]->image != '' && $userImage[0]->image !=null){
-                    $old_file =$path. $userImage[0]->image;
-                    if(file_exists($old_file)){
-                        unlink($old_file);
-                    }
+        // if($request->hasFile('image')){
+
+        //     $old_path =public_path('uploads/'). $teacher->image;
+        //     if(file_exists($old_path)){
+        //         @unlink($old_path);
+        //     }
+        //     $path = $request->image->public_path('uploads/');
+        //     $teacher->image =$path;
+        //     $teacher->save();
+        //     return redirect()->route('teachers.index');
+        // }
+        // $userImage =Teacher::select('id','image')->where(['id'=>$id])->get();
+        //     if($request->image != ''){
+        //         $path =public_path(). '/uploads/';
+
+        //         if($userImage[0]->image != '' && $userImage[0]->image !=null){
+        //             $old_file =$path. $userImage[0]->image;
+        //             if(file_exists($old_file)){
+        //                 @unlink($old_file);
+        //             }
+        //         }
+        //         $image =$request->image;
+        //         $extension =$image->getClientOriginalExtension();
+        //         $teacherImage =time(). '.' . $extension;
+        //         $image->move(public_path(). '/uploads/', $teacherImage);
+        //     }
+        //     else{  
+        //         $teacherImage =$userImage[0]->image;
+        //     }
+
+        //     $teacher =Teacher::where(['id'=>$id])->update([
+        //         'name' =>$request->fullName,
+        //         'phone' =>$request->phone,
+        //         'email' =>$request->email,
+        //         'role' =>$request->role,
+        //         'image' => $teacherImage,
+        //     ]);
+        //     return redirect()->route('teachers.index');
+         
+        $request->validate([
+            'fullName'=>'required',
+            'phone'=> 'required|digits:10',
+            'email' => 'required|email',
+            'image' => 'nullable|mimes:jpg,png,jpeg,gif|max:7000 '
+        ],
+        [
+            'fullName.required' => 'Full name is required*',
+            'phone.required' => 'Phone number is required*',
+            'phone.digits' => 'Phone number must be of 10 digits*',
+            'email.required' => 'Email is required*',
+            'email.email' => 'Email format is invalid*',
+            'image.max' => 'Image size should be less than 7 MB*'
+            
+        ]);
+
+            $teacher = Teacher::find($id);
+
+            if ($request->hasFile('image')) {
+                $old_path = public_path('uploads/') . $teacher->image;
+                if (file_exists($old_path)) {
+                    @unlink($old_path);
                 }
-                $image =$request->image;
-                $extension =$image->getClientOriginalExtension();
-                $teacherImage =time(). '.' . $extension;
+
+                $image = $request->image;
+                $teacherImage = time() . '.' . $image->extension();
                 $image->move(public_path('uploads/'), $teacherImage);
+                $teacher->image = $teacherImage;
             }
-            else{  
-                $teacherImage =$userImage[0]->image;
+            else{
+                $teacherImage =$teacher->image;
             }
 
-            $teacher =Teacher::where(['id'=>$id])->update([
-                'name' =>$request->name,
-                'phone' =>$request->phone,
-                'email' =>$request->email,
-                'role' =>$request->role,
-                'image' => $teacherImage,
-            ]);
+                $teacher->name = $request->fullName;
+                $teacher->phone = $request->phone;
+                $teacher->email = $request->email;
+                $teacher->role = $request->role;
+                $teacher->image= $teacherImage;
+                $teacher->save();
 
+                return redirect()->route('teachers.index');
     }
 
     /**

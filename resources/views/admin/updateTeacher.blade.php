@@ -14,7 +14,7 @@
         id="name"
         class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('fullName') border-red-500 @enderror" 
         placeholder="Your full name"
-        value="{{old('fullName')}}"
+        value="{{$teacher->name}}"
       />
       <span class="text-red-700 text-xs mt-1 font-medium">
         @error('fullName')
@@ -30,7 +30,7 @@
         id="phone"
         class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('phone') border-red-500 @enderror"
         placeholder="Your phone number"
-        value="{{old('phone')}}"
+        value="{{$teacher->phone}}"
       />
       <span class="text-red-700 text-xs font-medium">
         @error('phone')
@@ -46,7 +46,7 @@
         id="email"
         class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('fullName') border-red-500 @enderror"
         placeholder="Your email"
-        value="{{old('email')}}"
+        value="{{$teacher->email}}"
       />
       <span class="text-red-700 text-xs font-medium">
         @error('email')
@@ -57,26 +57,29 @@
     <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Role</label>
       <select name="role" id="role" class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400">
-        <option value="Computer Scinece">Computer Science</option>
-        <option value="BIBM">BIBM</option>
-        <option value="Software Engineering">Software Engineering</option>
-      </select>
+        <option value="Computer Science" {{ $teacher->role == 'Computer Science' ? 'selected' : '' }}>Computer Science</option>
+        <option value="BIBM" {{ $teacher->role == 'BIBM' ? 'selected' : '' }}>BIBM</option>
+        <option value="Software Engineering" {{ $teacher->role == 'Software Engineering' ? 'selected' : '' }}>Software Engineering</option>
+    </select>
+    
       <span class="text-red-700 text-xs font-medium">
         @error('role')
             {{$message}}
         @enderror
       </span>
     </div>
+    <img src="{{asset('uploads/'.$teacher->image)}}" alt="" class="w-20 rounded-full" id="showImage">
     <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Profile Picture</label>
       <input
           type="file"
-          name="profile_picture"
+          name="image"
           id="image"
+          onchange="document.querySelector('#showImage').src=window.URL.createObjectURL(this.files[0])"
           class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('profile_picture') border-red-500 @enderror"
       />
       <span class="text-red-700 text-xs font-medium">
-          @error('profile_picture')
+          @error('image')
               {{ $message }}
           @enderror
       </span>
@@ -85,7 +88,7 @@
       type="submit"
       class="w-full py-1 mt-3 bg-purple-600 text-white rounded-lg hover:bg-purple-500 duration-200"
     >
-      Register
+      Update
     </button>
   </form>
 </div>
