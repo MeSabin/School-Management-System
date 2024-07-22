@@ -1,6 +1,31 @@
 @extends('admin.adminLayout')
 
 @section('content')
+
+@if (session('updateTeacher'))
+<x-alert>
+  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-500 text-green-500 pr-8 pl-2 py-4 rounded-sm">
+    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+    <h3>{{ session('updateTeacher') }}</h3>
+  </div>
+</x-alert>
+@endif
+@if (session('registerTeacher'))
+<x-alert>
+  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-600 text-green-600 pr-8 pl-2 py-4 rounded-sm">
+    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+    <h3>{{ session('registerTeacher') }}</h3>
+  </div>
+</x-alert>
+@endif
+@if (session('deleteTeacher'))
+<x-alert>
+  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-600 text-green-600 pr-8 pl-2 py-4 rounded-sm">
+    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+    <h3>{{ session('deleteTeacher') }}</h3>
+  </div>
+</x-alert>
+@endif
     <h2 class="pt-6 pb-12">Teachers</h2>
     <a href="{{ route('teachers.create') }}" class="bg-purple-500 hover:bg-purple-600 duration-300 text-white rounded-md px-3 py-2">+Register</a>
     <div class="bg-white p-6 mt-6"> 

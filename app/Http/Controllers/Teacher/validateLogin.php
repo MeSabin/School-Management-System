@@ -22,12 +22,12 @@ class validateLogin extends Controller
     );
 
         if(Auth::guard('web')->attempt($credentials)) {
-            return redirect()->route('teacherDash');
+            return redirect()->route('teacherDash')->with('T_loginSuccess', "You are successfully logged in");
 
         }
         else{
-            session()->flash('loginError', "Invalid credentials provided!");
-            return redirect()->route('teacherLogin');
+            // session()->flash('loginError', "Invalid credentials provided!");
+            return redirect()->route('teacherLogin')->with('T_loginError', 'Invalid credentials provided!');
         }
     }
 
@@ -38,6 +38,6 @@ class validateLogin extends Controller
     
     public function Logout(){
         Auth::guard('web')->logout();
-        return redirect()->route('teacherLogin');
+        return redirect()->route('teacherLogin')->with('T_logoutMsg','You have been logged out');
     }
 }

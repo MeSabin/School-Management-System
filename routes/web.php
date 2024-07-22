@@ -16,7 +16,7 @@ Route::view('/admin', 'admin/login')->name('adminLogin');
 Route::view('/layout', 'mainDashLayout')->name('layout');
 
 
-Route::resource('teachers', AdminController::class)->middleware(validAdmin::class);
+Route::resource('teachers', AdminController::class)->middleware(validAdmin::class, PreventBackHistory::class);
 
 Route::prefix('admin')->group(function() {
    Route::post('/login', [validateAdmin::class, 'loginAdmin'])->name('checkAdminLogin');

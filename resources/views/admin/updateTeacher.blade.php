@@ -68,7 +68,7 @@
         @enderror
       </span>
     </div>
-    <img src="{{asset('uploads/'.$teacher->image)}}" alt="" class="w-20 rounded-full" id="showImage">
+    <img src="{{asset('uploads/'.$teacher->image)}}" alt="" class="w-20 rounded-full border" id="showImage">
     <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Profile Picture</label>
       <input

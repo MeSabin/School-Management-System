@@ -53,16 +53,6 @@ class AdminController extends Controller
             'image.max' => 'Image size should be less than 7 MB*'
             
         ]);
-    
-        // $teacher =new Teacher;
-
-        // $teacher->name =$request->fullName;
-        // $teacher->phone =$request->phone;
-        // $teacher->email =$request->email;
-        // $teacher->role =$request->role;
-        // $teacher->password =$request->password;
-
-        // $teacher->save();
 
         $image =$request->image;
         $extension =$image->extension();
@@ -78,7 +68,7 @@ class AdminController extends Controller
             'image' => $teacherImage
         ]);
 
-        return redirect()->route('teachers.index');
+        return redirect()->route('teachers.index')->with('registerTeacher', 'Teacher registration successful');
     }
 
     /**
@@ -103,49 +93,7 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
- 
-        // $teacher =Teacher::find($id);
-
-        // if($request->hasFile('image')){
-
-        //     $old_path =public_path('uploads/'). $teacher->image;
-        //     if(file_exists($old_path)){
-        //         @unlink($old_path);
-        //     }
-        //     $path = $request->image->public_path('uploads/');
-        //     $teacher->image =$path;
-        //     $teacher->save();
-        //     return redirect()->route('teachers.index');
-        // }
-        // $userImage =Teacher::select('id','image')->where(['id'=>$id])->get();
-        //     if($request->image != ''){
-        //         $path =public_path(). '/uploads/';
-
-        //         if($userImage[0]->image != '' && $userImage[0]->image !=null){
-        //             $old_file =$path. $userImage[0]->image;
-        //             if(file_exists($old_file)){
-        //                 @unlink($old_file);
-        //             }
-        //         }
-        //         $image =$request->image;
-        //         $extension =$image->getClientOriginalExtension();
-        //         $teacherImage =time(). '.' . $extension;
-        //         $image->move(public_path(). '/uploads/', $teacherImage);
-        //     }
-        //     else{  
-        //         $teacherImage =$userImage[0]->image;
-        //     }
-
-        //     $teacher =Teacher::where(['id'=>$id])->update([
-        //         'name' =>$request->fullName,
-        //         'phone' =>$request->phone,
-        //         'email' =>$request->email,
-        //         'role' =>$request->role,
-        //         'image' => $teacherImage,
-        //     ]);
-        //     return redirect()->route('teachers.index');
-         
+    {       
         $request->validate([
             'fullName'=>'required',
             'phone'=> 'required|digits:10',
@@ -186,7 +134,7 @@ class AdminController extends Controller
                 $teacher->image= $teacherImage;
                 $teacher->save();
 
-                return redirect()->route('teachers.index');
+                return redirect()->route('teachers.index')->with('updateTeacher', 'Teacher details has been updated');
     }
 
     /**
@@ -200,7 +148,7 @@ class AdminController extends Controller
         if (file_exists($imagePath)) {
             @unlink($imagePath);
         }
-        return redirect()->route('teachers.index')->with('success', 'Teacher deleted successfully.');
+        return redirect()->route('teachers.index')->with('deleteTeacher', 'Teacher deleted successfully.');
     } 
 
 }

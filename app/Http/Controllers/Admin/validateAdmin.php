@@ -22,10 +22,10 @@ class validateAdmin extends Controller
     );
 
         if(Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('adminDash'); 
+            return redirect()->route('adminDash')->with('A_loginSuccess', "You are successfully logged in"); 
         }
         else{
-            return redirect()->route('adminLogin');
+            return redirect()->route('adminLogin')->with('A_loginError', 'Invalid credentials provided!');
         }
     }
 
@@ -36,7 +36,7 @@ class validateAdmin extends Controller
     public function Logout()
     {
         Auth::guard('admin')->logout(); 
-        return redirect()->route('adminLogin');
+        return redirect()->route('adminLogin')->with('A_logoutMsg', 'You have been logged out');
     }
     
 }

@@ -2,7 +2,12 @@
 
 @section('content')
 @if (session('registerTeacher'))
-    <h2>{{session('registerTeacher')}}</h2>
+<x-alert>
+  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-red-500 text-red-500 pr-8 pl-2 py-4 rounded-sm">
+    <img src="{{ asset('images/error.png') }}" alt="" class="w-6 mr-2">
+    <h3>{{ session('registerTeacher') }}</h3>
+  </div>
+</x-alert>
 @endif
   <div class="bg-white px-5 pb-5 pt-2 rounded-xl shadow-custom w-[430px] mt-20">
     <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Register Tutor</h2>
