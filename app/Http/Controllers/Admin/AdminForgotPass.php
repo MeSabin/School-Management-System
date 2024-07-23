@@ -50,17 +50,19 @@ class AdminForgotPass extends Controller
        return redirect()->route('adminForgotPass')->with('A_successEmail', 'Email has been sent to your account');
     }
 
+
     public function resetPassword($token){
 
        $tokenExists = \DB::table('password_resets')->where('token', $token)->first();
 
        if($tokenExists == null){
-        return redirect()->route('adminForgotPass')->with('A_tokenError', 'Invalid request made');
+        return redirect()->route('adminForgotPass')->with('A_tokenError', 'Invalid request. Send email again');
        }
         return view('admin/resetPassword', [
             'token' => $token
         ]);
     }
+
 
     public function processResetPassword(Request $request){
         $token =$request->token;
@@ -76,12 +78,12 @@ class AdminForgotPass extends Controller
         'password' => 'required|min:6',
         'confirm_password' => 'required|same:password'
       ],
-    [
+      [
         'password.required' => 'Password field is required*',
         'confirm_password.required' => 'Confirm password field is required*',
         'password.min' => 'Password must be at least 6 chararcters*',
         'email.exists' => 'Please use your registered email address*'
-        ]);
+      ]);
 
        $updateAdmin = Admin::where('id', $admin->id)->update([
             'password' => Hash::make($request->password)

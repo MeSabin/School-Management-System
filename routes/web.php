@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Teacher\validateLogin;
 use App\Http\Controllers\Admin\validateAdmin;
 use App\Http\Controllers\Admin\AdminForgotPass;
+use App\Http\Controllers\Admin\AdminPagesController;
 
 
 Route::view('/', 'teachers/login')->name('teacherLogin')->middleware(PreventLoginWithoutLogout::class);
@@ -27,6 +28,7 @@ Route::prefix('admin')->group(function() {
    Route::post('/process-forgot-password', [AdminForgotPass::class , 'processForgotPass'])->name('processAdminForgotPass');
    Route::get ('/reset-password/{token}', [AdminForgotPass::class , 'resetPassword'])->name('adminResetPass');
    Route::post ('/process-reset-password', [AdminForgotPass::class , 'processResetPassword'])->name('processResetPassword');
+   Route::get ('/curriculumns', [AdminPagesController::class , 'showCurriculumns'])->name('showCurriculumns');
 });
 
 Route::post('/teacher/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');

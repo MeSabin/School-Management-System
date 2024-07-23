@@ -54,7 +54,7 @@
       <nav class="mt-4">
         <ul>
           <li>
-            <a href="{{ route('adminDash') }}" class="flex py-2 mb-2 px-3 bg-purple-400 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="{{ route('adminDash') }}" class="flex py-2 mb-2 px-3 rounded-md hover:bg-purple-400 {{ Route::is('adminDash') ? 'bg-purple-400' : '' }}">
               <span class="material-symbols-outlined ml-1 mr-4">
                 home
               </span>
@@ -62,7 +62,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ route('teachers.index')}}" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="{{ route('teachers.index')}}" class="flex py-2 mb-2 px-3 rounded-md hover:bg-purple-400 {{Route::is('teachers*') ? 'bg-purple-400' : ''}}">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 group
               </span>
@@ -70,7 +70,7 @@
             </a>
           </li>
           <li>
-            <a href="/assignments" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="{{ route('showCurriculumns') }}" class="flex py-2 mb-2 px-3 rounded-md hover:bg-purple-400 {{Route::is('showCurriculumns') ? 'bg-purple-400': ''}}">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 assignment
               </span>
@@ -78,7 +78,7 @@
             </a>
           </li>
           <li>
-            <a href="/notifications" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="/notifications" class="flex py-2 mb-2 px-3 rounded-md hover:bg-purple-400 ">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 notifications
               </span>
@@ -86,7 +86,7 @@
             </a>
           </li>
           <li>
-            <a href="/admin/logout" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="/admin/logout" class="flex py-2 mb-2 px-3 rounded-md hover:bg-purple-400 ">
               <span class="mr-3 ml-2 material-symbols-outlined">
                 logout
               </span>
