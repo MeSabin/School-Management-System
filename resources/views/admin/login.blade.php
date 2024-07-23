@@ -23,6 +23,14 @@
       </div>
     </x-alert>
   @endif
+  @if (session('A_successResetPass'))
+    <x-alert>
+      <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-600 text-green-600 pr-8 pl-2 py-4 rounded-sm">
+        <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+        <h3>{{ session('A_successResetPass') }}</h3>
+      </div>
+    </x-alert>
+  @endif
   <img src="{{ asset('images/signup.svg') }}" alt="" class="w-6/12 h-[400px]">
   <div class="bg-white px-5 pb-5 pt-2 rounded-xl shadow-custom ">
     <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Login as Admin</h2>
@@ -67,7 +75,7 @@
             <label class="ml-1 text-sm text-gray-700 cursor-pointer" for="rememberMe">Remember Me</label>
           </div>
           <div class="flex justify-between ">
-            <a href="#" class="text-sm text-purple-500 hover:underline inline-block" >Forgot your password?</a>
+            <a href="{{route('adminForgotPass')}}" class="text-sm text-purple-500 hover:underline inline-block" >Forgot your password?</a>
           </div>
       </div>
       <button

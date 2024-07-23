@@ -8,6 +8,7 @@ use App\Http\Middleware\PreventLoginWithoutLogout;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Teacher\validateLogin;
 use App\Http\Controllers\Admin\validateAdmin;
+use App\Http\Controllers\Admin\AdminForgotPass;
 
 
 Route::view('/', 'teachers/login')->name('teacherLogin')->middleware(PreventLoginWithoutLogout::class);
@@ -22,9 +23,10 @@ Route::prefix('admin')->group(function() {
    Route::post('/login', [validateAdmin::class, 'loginAdmin'])->name('checkAdminLogin');
    Route::get('/dashboard',[validateAdmin::class, 'adminDashboard'])->name('adminDash')->middleware(validAdmin::class, PreventBackHistory::class);
    Route::get('/logout',[validateAdmin::class, 'Logout'])->name('logoutAdmin');
-   // Route::get('/teachersList', [AdminController::class, 'index'])->name('teachersList')->middleware(validAdmin::class);
-   // Route::post('/registerTeacher','admin/registerTeacher')->name('registerTeacher')->middleware(validAdmin::class);
-   // Route::view('/updateTeacher','admin/updateTeacher')->name('updateTeacher')->middleware(validAdmin::class);
+   Route::get('/forgot-password', [AdminForgotPass::class , 'showForgotPassForm'])->name('adminForgotPass');
+   Route::post('/process-forgot-password', [AdminForgotPass::class , 'processForgotPass'])->name('processAdminForgotPass');
+   Route::get ('/reset-password/{token}', [AdminForgotPass::class , 'resetPassword'])->name('adminResetPass');
+   Route::post ('/process-reset-password', [AdminForgotPass::class , 'processResetPassword'])->name('processResetPassword');
 });
 
 Route::post('/teacher/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');
