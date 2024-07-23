@@ -14,11 +14,10 @@ use App\Http\Controllers\Admin\AdminPagesController;
 
 Route::view('/', 'teachers/login')->name('teacherLogin')->middleware(PreventLoginWithoutLogout::class);
 Route::view('/admin', 'admin/login')->name('adminLogin');
-// Route::view('/signup', 'admin/signup')->name('adminSingup');
 Route::view('/layout', 'mainDashLayout')->name('layout');
 
 
-Route::resource('teachers', AdminController::class)->middleware(validAdmin::class, PreventBackHistory::class);
+Route::resource('teachers', AdminController::class)->names('teachers')->middleware(validAdmin::class, PreventBackHistory::class);
 
 Route::prefix('admin')->group(function() {
    Route::post('/login', [validateAdmin::class, 'loginAdmin'])->name('checkAdminLogin');

@@ -44,9 +44,12 @@
 
   <div class="flex min-h-screen">
     <aside id="sidebar" class="w-64 bg-purple-500 text-white pr-3 pl-3 transition-all duration-700 z-10000">     
-      <div class="logoDiv pt-3 pb-3 flex items-center cursor-pointer">
-        <img src="{{ asset('images/computer.png')}}" alt="Image not found." class="invert w-10 ml-2">
-        <h2 class="text-lg ml-3 font-bold">𝒞𝓁𝒶𝓈𝓈𝐿𝒾𝓃𝓀</h2>
+      <div class="logoDiv pt-3 pl-2 pb-3 flex items-center cursor-pointer">
+        {{-- <img src="{{ asset('images/computer.png')}}" alt="Image not found." class="invert w-10 ml-2"> --}}
+        <span class="material-symbols-outlined w-10 ml-2">
+          school
+          </span>
+        <h2 class="text-lg font-bold">𝒞𝓁𝒶𝓈𝓈𝐿𝒾𝓃𝓀</h2>
       </div>
       <nav class="mt-4">
         <ul>
@@ -95,7 +98,10 @@
     </aside>
     <div class="flex-1 p-6 pt-3" id="mainContent">
       <header class="relative flex justify-between items-center bg-white shadow-md p-4 rounded-lg">
-        <img src="{{asset('images/menu.png')}}" alt="" class=" menuicon w-6 cursor-pointer absolute left-3 invert" id="menu">
+        {{-- <img src="{{asset('images/menu.png')}}" alt="" class=" menuicon w-6 cursor-pointer absolute left-3 invert" id="menu"> --}}
+        <span class="material-symbols-outlined cursor-pointer absolute left-3" id="menu">
+          menu
+          </span>
         <h2 class="text-xl font-medium text-purple-500 pl-10">Search Here!</h2>
         <div class="flex items-center space-x-4">
           <span class="text-gray-700">User Name</span>

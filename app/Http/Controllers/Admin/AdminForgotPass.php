@@ -47,7 +47,7 @@ class AdminForgotPass extends Controller
 
        Mail::to($request->email)->send(new ResetPasswordEmail($formData));
 
-       return redirect()->route('adminForgotPass')->with('A_successEmail', 'Email has been sent to your account');
+       return redirect()->route('adminForgotPass')->with('A_successEmail', 'Email sent to your account');
     }
 
 
