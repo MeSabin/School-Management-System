@@ -43,7 +43,9 @@
           name="email"
           class="w-80 px-2 py-3 text-xs mt-1 border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('email') border-red-500 @enderror"
           placeholder="Your email"
-          value="{{ old('email') }}"
+          @if (isset($_COOKIE['email']))  
+          value="{{ $_COOKIE['email']}}"
+          @endif
         />
         <span class="text-red-700 text-xs mt-1 font-medium">
           @error('email')
@@ -59,7 +61,9 @@
             name="password"
             class="w-full px-2 py-3 text-xs mt-1 border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('password') border-red-500 @enderror"
             placeholder="Your password"
-            value="{{ old('password') }}"
+            @if (isset($_COOKIE['password']))  
+            value="{{ $_COOKIE['password']}}"
+            @endif
           />
           
           <img src="{{ asset('images/close_eye.png') }}" alt="Icon" class="cursor-pointer absolute right-3 top-[50%] transform -translate-y-1/2 h-4 invert-[60%]">
@@ -71,7 +75,10 @@
         </span>
         <div class="flex items-center justify-between mt-5 mb-5">
           <div class="flex items-center">
-            <input class="cursor-pointer" type="checkbox" id="rememberMe">
+            <input name="remember" class="cursor-pointer" type="checkbox" id="rememberMe"  
+            @if (isset($_COOKIE['email']))  
+            checked =""
+            @endif>
             <label class="ml-1 text-sm text-gray-700 cursor-pointer" for="rememberMe">Remember Me</label>
           </div>
           <div class="flex justify-between ">

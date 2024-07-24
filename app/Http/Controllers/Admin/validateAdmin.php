@@ -11,6 +11,8 @@ use App\Http\Controllers\Controller;
 class validateAdmin extends Controller
 {
     public function loginAdmin(Request $request){
+        // dd($request->all());
+        // $remember = $request->has('remember');
         $credentials =$request->validate([
             'email' =>'required|email',
             'password'=>'required'
@@ -22,6 +24,13 @@ class validateAdmin extends Controller
     );
 
         if(Auth::guard('admin')->attempt($credentials)) {
+            // Remember me functionality
+            $allData = $request->all();
+            
+            if(isset($allData['remember']) && !empty($allData['remember'])){
+                setcookie('email', $allData['email'], time()+1200);
+                setcookie('password', $allData['password'], time()+1200);
+            }
             return redirect()->route('adminDash')->with('A_loginSuccess', "You are successfully logged in"); 
         }
         else{
@@ -29,10 +38,13 @@ class validateAdmin extends Controller
         }
     }
 
+
     public function adminDashboard(){
         return view('admin.dashboard');
 
     }
+
+
     public function Logout()
     {
         Auth::guard('admin')->logout(); 

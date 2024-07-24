@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Session;
 class validateLogin extends Controller
 {
     public function Login(Request $request){
+        $data = $request->all();
+        // dd($request->email);
+        // dd($data['email']);
         $credentials =$request->validate([
             'email' =>'required|email',
             'password'=>'required'
@@ -20,24 +23,28 @@ class validateLogin extends Controller
             'password.required' => 'Password is required*',
         ]
     );
-
+    
         if(Auth::guard('web')->attempt($credentials)) {
+
+            if (isset($request->remember) && !empty($request->remember)){
+                setcookie('email', $request->email, time()+1200);
+                setcookie('password', $request->password, time()+1200);
+            }
             return redirect()->route('teacherDash')->with('T_loginSuccess', "You are successfully logged in");
 
         }
         else{
-            // session()->flash('loginError', "Invalid credentials provided!");
             return redirect()->route('teacherLogin')->with('T_loginError', 'Invalid credentials provided!');
         }
     }
 
-    public function teacherDashboard(){
-        
-            return view('teachers.dashboard');
+    public function teacherDashboard(){     
+        return view('teachers.dashboard');
     }
     
-    public function Logout(){
+    public function Logout(Request $request){
         Auth::guard('web')->logout();
         return redirect()->route('teacherLogin')->with('T_logoutMsg','You have been logged out');
+        
     }
 }

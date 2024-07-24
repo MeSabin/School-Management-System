@@ -33,6 +33,9 @@
       display: flex;
       justify-content: center;
     }
+    #sidebar.active:hover .logoDiv{
+      padding-right: 78px;
+    }
     #sidebar.active .logoDiv img {
       margin-left: 0;
     }
@@ -54,7 +57,7 @@
       <nav class="mt-4">
         <ul>
           <li>
-            <a href="#" class="flex py-2 mb-2 px-3 bg-purple-400 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="#" class="flex py-2 mb-2 px-3 bg-purple-400 duration-300 rounded-md hover:bg-purple-400 ">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 home
               </span>
@@ -62,7 +65,7 @@
             </a>
           </li>
           <li>
-            <a href="/studentList" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="/studentList" class="flex py-2 mb-2 px-3 duration-300 rounded-md hover:bg-purple-400 ">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 group
               </span>
@@ -70,7 +73,7 @@
             </a>
           </li>
           <li>
-            <a href="/assignments" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="/assignments" class="flex py-2 mb-2 px-3 duration-300 rounded-md hover:bg-purple-400 ">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 assignment
               </span>
@@ -78,7 +81,7 @@
             </a>
           </li>
           <li>
-            <a href="/notifications" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="/notifications" class="flex py-2 mb-2 px-3 duration-300 rounded-md hover:bg-purple-400 ">
               <span class="ml-1 mr-4 material-symbols-outlined">
                 notifications
               </span>
@@ -86,7 +89,7 @@
             </a>
           </li>
           <li>
-            <a href="/teacher/logout" class="flex py-2 mb-2 px-3 active:bg-purple-400 rounded-md hover:bg-purple-400 ">
+            <a href="/teacher/logout" class="flex py-2 mb-2 px-3 duration-300 rounded-md hover:bg-purple-400 ">
               <span class="ml-2 mr-3 material-symbols-outlined">
                 logout
               </span>

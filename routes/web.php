@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\AdminForgotPass;
 use App\Http\Controllers\Admin\AdminPagesController;
 
 
-Route::view('/', 'teachers/login')->name('teacherLogin')->middleware(PreventLoginWithoutLogout::class);
+Route::view('/', 'teachers/login')->name('teacherLogin')->middleware();
 Route::view('/admin', 'admin/login')->name('adminLogin');
 Route::view('/layout', 'mainDashLayout')->name('layout');
 
