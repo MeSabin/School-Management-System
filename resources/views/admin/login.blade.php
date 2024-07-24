@@ -59,6 +59,7 @@
           <input
             type="password"
             name="password"
+            id="password"
             class="w-full px-2 py-3 text-xs mt-1 border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('password') border-red-500 @enderror"
             placeholder="Your password"
             @if (isset($_COOKIE['password']))  
@@ -66,7 +67,7 @@
             @endif
           />
           
-          <img src="{{ asset('images/close_eye.png') }}" alt="Icon" class="cursor-pointer absolute right-3 top-[50%] transform -translate-y-1/2 h-4 invert-[60%]">
+          <img src="{{ asset('images/close_eye.png') }}" alt="Icon" id="eyeIcon" class="cursor-pointer absolute right-3 top-[40%]  h-4 invert-[60%]">
         </div>
         <span class="text-red-700 text-xs mt-1 font-medium">
           @error('password')
@@ -93,5 +94,20 @@
       </button>
     </form>
   </div>
+  <script src="{{ asset('js/showLoginPassword.js')}}"></script>
+  {{-- <script>
+        let password =document.querySelector('#password');
+        let eyeIcon = document.querySelector('#eyeIcon');
+
+    eyeIcon.onclick =function(){
+      if(password.type =='password'){
+          password.type ='text';
+      }
+      else{
+          password.type ='password';
+          
+      }
+    }
+  </script> --}}
 </body> 
 </html>

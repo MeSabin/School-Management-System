@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 class validateLogin extends Controller
 {
     public function Login(Request $request){
-        $data = $request->all();
+        // $data = $request->all();
         // dd($request->email);
         // dd($data['email']);
         $credentials =$request->validate([
@@ -25,10 +25,11 @@ class validateLogin extends Controller
     );
     
         if(Auth::guard('web')->attempt($credentials)) {
-
-            if (isset($request->remember) && !empty($request->remember)){
-                setcookie('email', $request->email, time()+1200);
-                setcookie('password', $request->password, time()+1200);
+            $allData = $request->all();
+            
+            if(isset($allData['remember']) && !empty($allData['remember'])){
+                setcookie('email', $allData['email'], time()+1200);
+                setcookie('password', $allData['password'], time()+1200);
             }
             return redirect()->route('teacherDash')->with('T_loginSuccess', "You are successfully logged in");
 

@@ -11,8 +11,6 @@ use App\Http\Controllers\Controller;
 class validateAdmin extends Controller
 {
     public function loginAdmin(Request $request){
-        // dd($request->all());
-        // $remember = $request->has('remember');
         $credentials =$request->validate([
             'email' =>'required|email',
             'password'=>'required'

@@ -63,7 +63,7 @@
             @endif
           />
           
-          <img src="{{ asset('images/close_eye.png') }}" alt="Icon" class="cursor-pointer absolute right-3 top-[50%] transform -translate-y-1/2 h-4 invert-[60%]">
+          <img src="{{ asset('images/close_eye.png') }}" alt="Icon" class="cursor-pointer absolute right-3 top-[40%] h-4 invert-[60%]">
         </div>
         <span class="text-red-700 text-xs mt-1 font-medium">
           @error('password')
