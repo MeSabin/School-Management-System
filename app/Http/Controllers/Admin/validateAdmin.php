@@ -26,8 +26,8 @@ class validateAdmin extends Controller
             $allData = $request->all();
             
             if(isset($allData['remember']) && !empty($allData['remember'])){
-                setcookie('email', $allData['email'], time()+1200);
-                setcookie('password', $allData['password'], time()+1200);
+                setcookie('email', $allData['email'], time()+(86400*30));
+                setcookie('password', $allData['password'], time()+(86400*30));
             }
             return redirect()->route('adminDash')->with('A_loginSuccess', "You are successfully logged in"); 
         }

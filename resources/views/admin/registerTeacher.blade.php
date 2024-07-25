@@ -85,7 +85,7 @@
           placeholder="Create a new password"
           value="{{old('password')}}"
         />
-        <img src="{{ asset('images/close_eye.png') }}" alt="Icon" class="cursor-pointer absolute right-3 top-[50%] transform -translate-y-1/2 h-4 invert-[60%]">
+        <img src="{{ asset('images/close_eye.png') }}" alt="Icon" id="eyeIcon" class="cursor-pointer absolute right-3 top-[50%] transform -translate-y-1/2 h-4 invert-[60%]">
         </span>
       </div>
       <span class="text-red-700 text-xs font-medium">
@@ -116,4 +116,5 @@
     </button>
   </form>
 </div>
+<script src="{{ asset('js/showLoginPassword.js')}}"></script>
 @endsection

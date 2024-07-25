@@ -76,14 +76,11 @@
         </span>
         <div class="flex items-center justify-between mt-5 mb-5">
           <div class="flex items-center">
-            <input name="remember" class="cursor-pointer" type="checkbox" id="rememberMe"  
-            @if (isset($_COOKIE['email']))  
-            checked =""
-            @endif>
+            <input name="remember" class="cursor-pointer" type="checkbox" id="rememberMe">
             <label class="ml-1 text-sm text-gray-700 cursor-pointer" for="rememberMe">Remember Me</label>
           </div>
           <div class="flex justify-between ">
-            <a href="{{route('adminForgotPass')}}" class="text-sm text-purple-500 hover:underline inline-block" >Forgot your password?</a>
+            <a href="{{route('adminForgotPass')}}" class="text-sm text-purple-500 hover:underline inline-block" >Forgot password?</a>
           </div>
       </div>
       <button
@@ -95,19 +92,5 @@
     </form>
   </div>
   <script src="{{ asset('js/showLoginPassword.js')}}"></script>
-  {{-- <script>
-        let password =document.querySelector('#password');
-        let eyeIcon = document.querySelector('#eyeIcon');
-
-    eyeIcon.onclick =function(){
-      if(password.type =='password'){
-          password.type ='text';
-      }
-      else{
-          password.type ='password';
-          
-      }
-    }
-  </script> --}}
 </body> 
 </html>

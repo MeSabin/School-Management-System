@@ -9,9 +9,14 @@ export default {
     extend: {
       boxShadow: {
         'custom' :'0 0 10px rgba(0, 0, 0, 0.1)',
-      }
+      },
+      filter: {
+        'invert-90': 'invert(90%)'
+      },
     },
   },
-  plugins: [],
-}
+  plugins: [
+    require('tailwindcss-filters'),
+  ],
+};
 
