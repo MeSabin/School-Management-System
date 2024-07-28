@@ -2,6 +2,9 @@
   @section('title')
     Admin Dashboard
   @endsection
+  @section('pageName')
+      Admin Dashboard
+  @endsection
   @section('content')
   @if (session('A_loginSuccess'))
     <x-alert>

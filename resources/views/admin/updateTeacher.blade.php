@@ -1,5 +1,7 @@
 @extends('admin.adminLayout')
-
+@section('pageName')
+    Update Teacher Details
+@endsection
 @section('content')
   <div class="bg-white px-5 pb-5 pt-2 rounded-xl shadow-custom w-[430px]">
     <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Register Tutor</h2>

@@ -1,0 +1,59 @@
+#sidebar.active {
+   width: 80px;
+ }
+ #sidebar.active li a span, #sidebar.active li ul  {
+   display: none;
+ }
+ #sidebar.active h2 {
+   display: none;
+ }
+ #sidebar.active .material-symbols-outlined {
+   display: block;
+ }
+ #sidebar.active ul li a .dropdown {
+   display: none;
+ }
+ #sidebar.active .logoDiv{
+   margin-left: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ #sidebar.active .logoDiv img{
+   margin-left: 0;
+ }
+ .invert-custom {
+   filter: invert(50%);
+ }
+ .activeLink{
+   background-color: rgb(242, 208, 255);
+   font-weight: 800;
+ }
+ #mainContent {
+   margin-left: 256px;
+ }
+ #sidebar.active ~ #mainContent {
+   margin-left: 80px;
+ }
+ header.sidebar-active {
+   left: 80px;
+ }
+ .profilePopup {
+ display: none; 
+}
+#profilePic:active{
+   background-color: rgb(79, 79, 79);
+   border-radius: 100%;
+   padding: 3px;
+   transition: background-color 1s ease;
+}
+nav ul li a:hover .dropdown{
+  transform: translateY(-1%) rotate(-180deg);
+}
+nav ul li a .dropdown{
+  transform: translateY(-1%);
+  transition: transform 0.4s;
+}
+.showSubLis{
+  display: block;
+}

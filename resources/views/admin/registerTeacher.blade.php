@@ -1,6 +1,10 @@
 @extends('admin.adminLayout')
 
+@section('pageName')
+    Register New Teacher
+@endsection
 @section('content')
+
 @if (session('registerTeacher'))
 <x-alert>
   <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-red-500 text-red-500 pr-8 pl-2 py-4 rounded-sm">
@@ -48,7 +52,7 @@
     <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Email</label>
       <input
-        type=""
+        type="email"
         name="email"
         id="email"
         class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('fullName') border-red-500 @enderror"
@@ -64,7 +68,7 @@
     <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Role</label>
       <select name="role" id="role" class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400">
-        <option value="Computer Scinece">Computer Science</option>
+        <option value="Computer Science">Computer Science</option>
         <option value="BIBM">BIBM</option>
         <option value="Software Engineering">Software Engineering</option>
       </select>
@@ -116,5 +120,19 @@
     </button>
   </form>
 </div>
-<script src="{{ asset('js/showLoginPassword.js')}}"></script>
+<script>
+    let password =document.querySelector('#password');
+    let eyeIcon = document.querySelector('#eyeIcon');
+
+  eyeIcon.onclick =function(){
+    if(password.type =='password'){
+        password.type ='text';
+        eyeIcon.src = '{{asset('images/open_eye.png')}}';
+    }
+    else{
+        password.type ='password';
+        eyeIcon.src = '{{asset('images/close_eye.png')}}';
+    }
+  }
+</script>
 @endsection
