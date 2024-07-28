@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Teacher\validateLogin;
 use App\Http\Controllers\Admin\validateAdmin;
 use App\Http\Controllers\Admin\AdminForgotPass;
+use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Admin\CS_Subjects;
 
 
@@ -28,6 +29,10 @@ Route::prefix('admin')->group(function() {
    Route::post('/process-forgot-password', [AdminForgotPass::class , 'processForgotPass'])->name('processAdminForgotPass');
    Route::get ('/reset-password/{token}', [AdminForgotPass::class , 'resetPassword'])->name('adminResetPass');
    Route::post ('/process-reset-password', [AdminForgotPass::class , 'processResetPassword'])->name('processResetPassword');
+   Route::get ('/curriculumns/addClass', [AdminPagesController::class , 'addClass'])->name('adminAddClass')->middleware(validAdmin::class);
+   Route::get('/curriculumns/viewClass', [AdminPagesController::class, 'viewGroups'])->name('viewGroups')->middleware(validAdmin::class);
+   Route::post ('/storeClassDetails', [AdminPagesController::class , 'storeClassDetails'])->name('storeClassDetails')->middleware(validAdmin::class);
+   Route::delete('/deleteClassDetails/{id}', [AdminPagesController::class, 'deleteClass'])->name('deleteClassDetails');
 });
 
 Route::post('/teacher/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');

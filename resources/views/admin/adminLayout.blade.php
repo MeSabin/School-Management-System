@@ -65,11 +65,11 @@
             </a>
           </li>
           <li>
-            <a href="#" id="curriculumns" class="flex items-center py-3 mb-2 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('subjects*') ? 'activeLink' : ''}}">
-              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('subjects*') ? 'text-purple-600' : '' }}">
+            <a href="#" id="curriculumns" class="flex items-center py-3 mb-2 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('subjects*') ? 'activeLink' : ''}} {{Request::is('admin/curriculumns*') ? 'activeLink' : ''}}">
+              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('subjects*') ? 'text-purple-600' : '' }} {{Request::is('admin/curriculumns*') ? 'text-purple-600' : ''}}">
                 assignment
               </span>
-              <span class="text-gray-500 font-semibold {{ Route::is('subjects*') ? 'text-purple-600' : '' }}">Curriculums</span>
+              <span class="text-gray-500 font-semibold {{ Route::is('subjects*') ? 'text-purple-600' : '' }} {{Request::is('admin/curriculumns*') ? 'text-purple-600' : ''}}">Curriculums</span>
               <span class="dropdown material-symbols-outlined text-gray-600 ml-12 {{ Route::is('') ? 'text-purple-600' : '' }}">
                 keyboard_arrow_down
               </span>
@@ -77,12 +77,12 @@
             <ul class="sub-ul-curriculum hidden ">
               <li>
                 <a href="{{ route('subjects.index') }}" class="flex justify-start py-3 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300 ">
-                  <span class="text-gray-500 text-sm font-semibold">Assign Semester</span>
+                  <span class="text-gray-500 text-sm font-semibold {{ Route::is('subjects*') ? 'text-purple-600' : '' }}">Assign Semester</span>
                 </a>
               </li>
               <li>
-                <a href="" class="flex py-3 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
-                  <span class="text-gray-500 text-sm font-semibold {{ Route::is('subjects.create') ? 'text-purple-600' : '' }}">Add Class</span>
+                <a href="{{route('viewGroups')}}" class="flex py-3 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
+                  <span class="text-gray-500 text-sm font-semibold {{ Request::is('admin/curriculumns*') ? 'text-purple-600' : '' }}">Add Class</span>
                 </a>
               </li>
             </ul>
@@ -179,7 +179,8 @@
   <script src="{{ asset('js/adminLayout_profile.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $('#teachers').click(function (){
+    $('#teachers').click(function (e){
+      e.preventDefault();
       $('ul li .sub-ul').toggleClass('showSubLis');
     });
     $('#curriculumns').click(function (){
