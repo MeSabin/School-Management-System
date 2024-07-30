@@ -8,8 +8,6 @@
   @vite('resources/css/adminLayout_profile.css')
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 
 <body class="bg-gray-100">
@@ -33,39 +31,54 @@
             </a>
           </li>
           <li>
-            <a href="#" id="teachers" class="flex items-center py-3 mb-2 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('teachers*') ? 'activeLink' : ''}}">
-              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('teachers*') ? 'text-purple-600' : '' }}">
+            <a href="#" id="teachers" class="flex items-center py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('teachers*') ? 'activeLink' : ''}} {{ Route::is('assignModuleTeacher*') ? 'activeLink' : '' }}">
+              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('teachers*') ? 'text-purple-600' : '' }} {{ Route::is('assignModuleTeacher*') ? 'text-purple-600' : '' }}">
                 group
               </span>
-              <span class="text-gray-500 font-semibold {{ Route::is('teachers*') ? 'text-purple-600' : '' }}">Teachers</span>
+              <span class="text-gray-500 font-semibold {{ Route::is('teachers*') ? 'text-purple-600' : '' }} {{ Route::is('assignModuleTeacher*') ? 'text-purple-600' : '' }}">Teachers</span>
               <span class="dropdown material-symbols-outlined text-gray-600 ml-[4.5rem] {{ Route::is('teachers*') ? 'text-purple-600' : '' }}">
                 keyboard_arrow_down
               </span>
             </a>
-            <ul class="sub-ul hidden ">
+            <ul class="sub-ul">
               <li>
-                <a href="{{ route('teachers.index') }}" class="flex justify-start py-3 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
-                  <span class="text-gray-500 text-sm font-semibold">Register Teacher</span>
+                <a href="{{ route('teachers.index') }}" class="flex justify-start py-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
+                  <span class="text-gray-500 text-sm font-semibold {{ Route::is('teachers*') ? 'text-purple-600' : '' }}">Register Teacher</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="flex py-3 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
-                  <span class="text-gray-500 text-sm font-semibold ">Assign class/subject</span>
+                <a href="{{route('assignModuleTeacher.index')}}" class="flex py-2 mb-2  px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
+                  <span class="text-gray-500 text-sm font-semibold {{ Route::is('assignModuleTeacher*') ? 'text-purple-600' : '' }}">Assign class/subject</span>
                 </a>
               </li>
             </ul>
           </li>
           <li>
           <li class="">
-            <a href="#" class="flex py-3 mb-2 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('') ? 'activeLink' : ''}}">
-              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('') ? 'text-purple-600' : '' }}">
+            <a href="#" id="students" class="flex py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('students*') ? 'activeLink' : ''}}">
+              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('students*') ? 'text-purple-600' : '' }}">
                 diversity_1
               </span>
-              <span class="text-gray-500 font-semibold {{ Route::is('') ? 'text-purple-600' : '' }}">Students</span>
+              <span class="text-gray-500 font-semibold {{ Route::is('students*') ? 'text-purple-600' : '' }}">Students</span>
+              <span class="dropdown material-symbols-outlined text-gray-600 ml-[4.7rem] {{ Route::is('') ? 'text-purple-600' : '' }}">
+                keyboard_arrow_down
+              </span>
             </a>
+            <ul class="sub-ul-students">
+              <li>
+                <a href="{{ route('students.index') }}" class="flex justify-start py-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
+                  <span class="text-gray-500 text-sm font-semibold {{ Route::is('students*') ? 'text-purple-600' : '' }}">Register Student</span>
+                </a>
+              </li>
+              <li>
+                <a href="" class="flex py-2 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
+                  <span class="text-gray-500 text-sm font-semibold {{ Route::is('') ? 'text-purple-600' : '' }}">Assign modules</span>
+                </a>
+              </li>
+            </ul>
           </li>
           <li>
-            <a href="#" id="curriculumns" class="flex items-center py-3 mb-2 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('subjects*') ? 'activeLink' : ''}} {{Request::is('admin/curriculumns*') ? 'activeLink' : ''}}">
+            <a href="#" id="curriculumns" class="flex items-center py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('subjects*') ? 'activeLink' : ''}} {{Request::is('admin/curriculumns*') ? 'activeLink' : ''}}">
               <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('subjects*') ? 'text-purple-600' : '' }} {{Request::is('admin/curriculumns*') ? 'text-purple-600' : ''}}">
                 assignment
               </span>
@@ -74,14 +87,14 @@
                 keyboard_arrow_down
               </span>
             </a>
-            <ul class="sub-ul-curriculum hidden ">
+            <ul class="sub-ul-curriculum">
               <li>
-                <a href="{{ route('subjects.index') }}" class="flex justify-start py-3 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300 ">
+                <a href="{{ route('subjects.index') }}" class="flex justify-start py-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300 ">
                   <span class="text-gray-500 text-sm font-semibold {{ Route::is('subjects*') ? 'text-purple-600' : '' }}">Assign Semester</span>
                 </a>
               </li>
               <li>
-                <a href="{{route('viewGroups')}}" class="flex py-3 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
+                <a href="{{route('viewGroups')}}" class="flex py-2 mb-2 px-3 pl-14 rounded-md hover:bg-gray-200 duration-300">
                   <span class="text-gray-500 text-sm font-semibold {{ Request::is('admin/curriculumns*') ? 'text-purple-600' : '' }}">Add Class</span>
                 </a>
               </li>
@@ -115,11 +128,12 @@
       </nav>
     </aside>
     <div class="flex-1 p-6 pt-0 transition-all duration-700" id="mainContent">
-      <header class=" fixed left-[256px] ml-6 right-[1.5rem] top-3 flex justify-between items-center transition-all duration-700 bg-white shadow-custom p-4 rounded-lg">
-        <span class="material-symbols-outlined cursor-pointer absolute left-3 text-gray-600" id="menu">
-          menu
-        </span>
-        <div class="pl-12 text-gray-600 font-bold text-lg">
+      <header class=" fixed left-[256px] ml-6 right-[1.5rem] top-3 transition-all duration-700 bg-white shadow-custom py-4 rounded-lg">
+        <div class="flex flex-row items-center justify-evenly">
+          <span class="material-symbols-outlined cursor-pointer text-gray-600" id="menu">
+            menu
+          </span>
+        <div class="text-gray-600 font-bold text-lg block">
         @yield('pageName')
       </div>
         <div class="bg-gray-100 border-[1px] ml-[520px] border-gray-300 rounded-full px-4 py-2 flex justify-center items-center">
@@ -131,6 +145,11 @@
         <div id="imgDiv" class="flex items-center space-x-4">
           <span class="text-gray-700">Welcome, </span>
           <img src="{{ asset('images/profile.png')}}" alt="" id="profilePic" class="rounded-full w-10 h-10 cursor-pointer">
+        </div>
+      </div>
+        <div class="">
+          @yield('studentReg_li')
+          {{-- <p>hello</p> --}}
         </div>
       </header>
       
@@ -179,12 +198,16 @@
   <script src="{{ asset('js/adminLayout_profile.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $('#teachers').click(function (e){
-      e.preventDefault();
-      $('ul li .sub-ul').toggleClass('showSubLis');
-    });
-    $('#curriculumns').click(function (){
-      $('ul li .sub-ul-curriculum').toggleClass('showSubLis');
+    $(document).ready(function(){
+      $('#teachers').click(function (){
+        $('ul li .sub-ul').toggleClass('showSubLis');
+      });
+      $('#curriculumns').click(function (){
+        $('ul li .sub-ul-curriculum').toggleClass('showSubLis');
+      });
+      $('#students').click(function (){
+        $('ul li .sub-ul-students').toggleClass('showSubLis');
+      });
     });
   </script>
 </body>

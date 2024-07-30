@@ -38,6 +38,9 @@
  header.sidebar-active {
    left: 80px;
  }
+  #courseList.sidebar-active{
+    left: 80px;
+  }
  .profilePopup {
  display: none; 
 }
@@ -53,6 +56,9 @@ nav ul li a:hover .dropdown{
 nav ul li a .dropdown{
   transform: translateY(-1%);
   transition: transform 0.4s;
+}
+.sub-ul, .sub-ul-curriculum, .sub-ul-students {
+  display: none; /* Hide by default */
 }
 .showSubLis{
   display: block;

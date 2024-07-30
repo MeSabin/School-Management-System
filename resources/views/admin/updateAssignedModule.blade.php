@@ -5,13 +5,12 @@
 @endsection
 
 @section('content')
-
-<div class="mainContainer flex flex-column justify-start mt-48 ">
+<div class="mainContainer flex flex-column justify-start mt-56 ">
     <img src="{{ asset('images/signup.svg') }}" alt="" class="w-6/12 h-[370px]">
  {{-- Module/Subjects registration --}}
 <div class="rounded-lg bg-white shadow-custom w-2/6">
     <div class="container mx-auto p-6">
-        <h1 class="text-xl text-gray-600 font-bold mb-6 text-center">Register Subjects/Modules</h1>
+        <h1 class="text-xl text-gray-600 font-bold mb-6 text-center">Update Subjects/Modules</h1>
         <form action="{{route('subjects.update', $subject->id)}}" method="POST" class=" rounded">
             @csrf
             @method('PUT')

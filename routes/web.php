@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\validateAdmin;
 use App\Http\Controllers\Admin\AdminForgotPass;
 use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Admin\CS_Subjects;
+use App\Http\Controllers\Admin\AssignSubjectToTeacher;
+use App\Http\Controllers\Admin\Student;
 
 
 Route::view('/', 'teachers/login')->name('teacherLogin');
@@ -20,6 +22,8 @@ Route::view('/layout', 'mainDashLayout')->name('layout');
 
 Route::resource('teachers', AdminController::class)->names('teachers')->middleware(validAdmin::class, PreventBackHistory::class);
 Route::resource('subjects', CS_Subjects::class)->names('subjects')->middleware(validAdmin::class, PreventBackHistory::class);
+Route::resource('assign-module-teacher', AssignSubjectToTeacher::class)->names('assignModuleTeacher')->middleware(validAdmin::class, PreventBackHistory::class);
+Route::resource('students', Student::class)->names('students')->middleware(validAdmin::class, PreventBackHistory::class);
 
 Route::prefix('admin')->group(function() {
    Route::post('/login', [validateAdmin::class, 'loginAdmin'])->name('checkAdminLogin');

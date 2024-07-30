@@ -47,6 +47,7 @@ class AdminController extends Controller
             'phone.digits' => 'Phone number must be of 10 digits*',
             'email.required' => 'Email is required*',
             'email.email' => 'Email format is invalid*',
+            'email.unique' => 'Email already exists*',
             'password.required' => 'Password is required*',
             'password.min' => 'Password must be at least 6 chararcters*',
             'image.required' => 'Please select an image*',

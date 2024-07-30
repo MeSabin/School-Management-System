@@ -1,12 +1,12 @@
 @extends('admin.adminLayout')
 
 @section('pageName')
-    Register New Teacher
+    Register New Student
 @endsection
 @section('content')
   <div class="bg-white px-5 pb-5 pt-2 rounded-xl shadow-custom w-[430px] mt-20">
-    <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Register Tutor</h2>
-<form action="{{ route('teachers.store') }}" method="post" enctype="multipart/form-data">
+    <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Register Student</h2>
+<form action="{{ route('students.store') }}" method="post">
     @csrf
     <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Full Name</label>
@@ -25,6 +25,45 @@
       </span>
     </div>
     <div class="mb-2">
+      <label class="block text-gray-700 text-sm font-medium">Roll Number</label>
+      <input
+        type="number"
+        name="roll"
+        id="roll"
+        class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('roll') border-red-500 @enderror" 
+        placeholder="Student roll number"
+        value="{{old('roll')}}"
+      />
+      <span class="text-red-700 text-xs mt-1 font-medium">
+        @error('roll')
+            {{$message}}
+        @enderror
+      </span>
+    </div>
+    <div class="mb-2">
+      <label class="block text-gray-700 text-sm font-medium">Semester</label>
+      <select name="semester" id="semester" name="semester" class=" w-full p-2 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-purple-300">
+        <option value="Semester 1">Semester 1</option>
+        <option value="Semester 2">Semester 2</option>
+        <option value="Semester 3">Semester 3</option>
+        <option value="Semester 4">Semester 4</option>
+        <option value="Semester 5">Semester 5</option>
+        <option value="Semester 6">Semester 6</option>
+        <option value="Semester 7">Semester 7</option>
+        <option value="Semester 8">Semester 8</option>
+      </select>
+    </div>
+    <div class="mb-2">
+      <div class="mb-4">
+        <label for="" class="block text-gray-600 font-bold mb-2">Group Name</label>
+        <select name="group_name" id="group" class=" w-full p-2 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-purple-300">
+           @foreach ($groups as $group)
+           <option value="{{$group}}"> {{$group}}</option>
+           @endforeach
+      </select>
+    </div>
+    </div>
+    <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Phone</label>
       <input
         type="tel"
@@ -33,6 +72,22 @@
         class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('phone') border-red-500 @enderror"
         placeholder="Your phone number"
         value="{{old('phone')}}"
+      />
+      <span class="text-red-700 text-xs font-medium">
+        @error('phone')
+            {{$message}}
+        @enderror
+      </span>
+    </div>
+    <div class="mb-2">
+      <label class="block text-gray-700 text-sm font-medium">DOB</label>
+      <input
+        type="date"
+        name="dob"
+        id="dob"
+        class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('phone') border-red-500 @enderror"
+        placeholder="Student date of birth"
+        value="{{old('dob')}}"
       />
       <span class="text-red-700 text-xs font-medium">
         @error('phone')
@@ -57,19 +112,6 @@
       </span>
     </div>
     <div class="mb-2">
-      <label class="block text-gray-700 text-sm font-medium">Role</label>
-      <select name="role" id="role" class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400">
-        <option value="Computer Science">Computer Science</option>
-        <option value="BIBM">BIBM</option>
-        <option value="Software Engineering">Software Engineering</option>
-      </select>
-      <span class="text-red-700 text-xs font-medium">
-        @error('role')
-            {{$message}}
-        @enderror
-      </span>
-    </div>
-    <div class="mb-2">
       <label class="block text-gray-700 text-sm font-medium">Password</label>
       <div class="relative">
         <input
@@ -89,20 +131,6 @@
         @enderror
       </span>
     </div> 
-    <div class="mb-2">
-      <label class="block text-gray-700 text-sm font-medium">Profile Picture</label>
-      <input
-          type="file"
-          name="image"
-          id="image"
-          class="w-full px-2 py-2 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('profile_picture') border-red-500 @enderror"
-      />
-      <span class="text-red-700 text-xs font-medium">
-          @error('image')
-              {{ $message }}
-          @enderror
-      </span>
-  </div>
     <button
       type="submit"
       class="w-full py-1 mt-3 bg-purple-600 text-white rounded-lg hover:bg-purple-500 duration-200"

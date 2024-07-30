@@ -6,7 +6,22 @@
 
 @section('content')
 
-<div class="mainContainer flex flex-column justify-start mt-48 ">
+<div class="bg-white rounded-md shadow-custom fixed left-[256px] ml-6 right-[1.5rem] top-28 z-10">
+    <ul class="flex">
+        <li class="py-4 border-b-4 border-purple-500">
+            <a href=""  class="text-gray-600 px-2 rounded-lg cursor-pointer transition duration-300">Computer Science</a>  
+        </li>
+        <li class="py-4">
+            <a href="" class="text-gray-600 px-2 rounded-lg cursor-pointer transition duration-300">Software Engineering</a>
+            
+        </li>
+        <li class="py-4">
+            <a href="" class="text-gray-600 px-2 rounded-lg cursor-pointer transition duration-300">BIBM</a>
+        </li>
+    </ul>
+ </div>
+
+<div class="mainContainer flex flex-column justify-start mt-56 ">
     <img src="{{ asset('images/signup.svg') }}" alt="" class="w-6/12 h-[370px]">
  {{-- Module/Subjects registration --}}
 <div class="rounded-lg bg-white shadow-custom w-2/6">
