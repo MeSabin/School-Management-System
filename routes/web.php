@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Admin\CS_Subjects;
 use App\Http\Controllers\Admin\AssignSubjectToTeacher;
 use App\Http\Controllers\Admin\Student;
+use App\Http\Controllers\Admin\BulkStudents;
 
 
 Route::view('/', 'teachers/login')->name('teacherLogin');
@@ -37,6 +38,8 @@ Route::prefix('admin')->group(function() {
    Route::get('/curriculumns/viewClass', [AdminPagesController::class, 'viewGroups'])->name('viewGroups')->middleware(validAdmin::class);
    Route::post ('/storeClassDetails', [AdminPagesController::class , 'storeClassDetails'])->name('storeClassDetails')->middleware(validAdmin::class);
    Route::delete('/deleteClassDetails/{id}', [AdminPagesController::class, 'deleteClass'])->name('deleteClassDetails');
+   Route::get ('bulkAddForm', [BulkStudents::class , 'showBulkAddForm'])->name('showBulkAddForm')->middleware(validAdmin::class, PreventBackHistory::class);
+   Route::post ('storeBulkStudents', [BulkStudents::class , 'storeBulkStudents'])->name('storeBulkStudents')->middleware(validAdmin::class, PreventBackHistory::class);
 });
 
 Route::post('/teacher/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');

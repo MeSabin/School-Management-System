@@ -31,12 +31,12 @@
             </a>
           </li>
           <li>
-            <a href="#" id="teachers" class="flex items-center py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('teachers*') ? 'activeLink' : ''}} {{ Route::is('assignModuleTeacher*') ? 'activeLink' : '' }}">
-              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('teachers*') ? 'text-purple-600' : '' }} {{ Route::is('assignModuleTeacher*') ? 'text-purple-600' : '' }}">
+            <a href="#" id="teachers" class="flex items-center py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('teachers*', 'assignModuleTeacher*') ? 'activeLink' : ''}}">
+              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('teachers*', 'assignModuleTeacher*') ? 'text-purple-600' : '' }}">
                 group
               </span>
-              <span class="text-gray-500 font-semibold {{ Route::is('teachers*') ? 'text-purple-600' : '' }} {{ Route::is('assignModuleTeacher*') ? 'text-purple-600' : '' }}">Teachers</span>
-              <span class="dropdown material-symbols-outlined text-gray-600 ml-[4.5rem] {{ Route::is('teachers*') ? 'text-purple-600' : '' }}">
+              <span class="text-gray-500 font-semibold {{ Route::is('teachers*', 'assignModuleTeacher*') ? 'text-purple-600' : '' }}">Teachers</span>
+              <span class="dropdown material-symbols-outlined text-gray-600 ml-[4.5rem]">
                 keyboard_arrow_down
               </span>
             </a>
@@ -55,12 +55,12 @@
           </li>
           <li>
           <li class="">
-            <a href="#" id="students" class="flex py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('students*') ? 'activeLink' : ''}}">
-              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('students*') ? 'text-purple-600' : '' }}">
+            <a href="#" id="students" class="flex py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('students*', 'bulkStudents*') ? 'activeLink' : ''}}">
+              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('students*', 'bulkStudents*') ? 'text-purple-600' : '' }}">
                 diversity_1
               </span>
-              <span class="text-gray-500 font-semibold {{ Route::is('students*') ? 'text-purple-600' : '' }}">Students</span>
-              <span class="dropdown material-symbols-outlined text-gray-600 ml-[4.7rem] {{ Route::is('') ? 'text-purple-600' : '' }}">
+              <span class="text-gray-500 font-semibold {{ Route::is('students*', 'bulkStudents*') ? 'text-purple-600' : '' }}">Students</span>
+              <span class="dropdown material-symbols-outlined text-gray-600 ml-[4.7rem]">
                 keyboard_arrow_down
               </span>
             </a>
@@ -78,12 +78,12 @@
             </ul>
           </li>
           <li>
-            <a href="#" id="curriculumns" class="flex items-center py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Route::is('subjects*') ? 'activeLink' : ''}} {{Request::is('admin/curriculumns*') ? 'activeLink' : ''}}">
-              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Route::is('subjects*') ? 'text-purple-600' : '' }} {{Request::is('admin/curriculumns*') ? 'text-purple-600' : ''}}">
+            <a href="#" id="curriculumns" class="flex items-center py-3 px-3 rounded-md hover:bg-gray-200 duration-300 {{Request::is('subjects*', 'admin/curriculumns*') ? 'activeLink' : ''}}">
+              <span class="ml-1 mr-4 material-symbols-outlined text-gray-600 {{ Request::is('subjects*', 'admin/curriculumns*') ? 'text-purple-600' : '' }}">
                 assignment
               </span>
-              <span class="text-gray-500 font-semibold {{ Route::is('subjects*') ? 'text-purple-600' : '' }} {{Request::is('admin/curriculumns*') ? 'text-purple-600' : ''}}">Curriculums</span>
-              <span class="dropdown material-symbols-outlined text-gray-600 ml-12 {{ Route::is('') ? 'text-purple-600' : '' }}">
+              <span class="text-gray-500 font-semibold {{ Request::is('subjects*', 'admin/curriculumns*') ? 'text-purple-600' : '' }}">Curriculums</span>
+              <span class="dropdown material-symbols-outlined text-gray-600 ml-12">
                 keyboard_arrow_down
               </span>
             </a>

@@ -55,7 +55,7 @@
     </div>
     <div class="mb-2">
       <div class="mb-4">
-        <label for="" class="block text-gray-600 font-bold mb-2">Group Name</label>
+        <label for="" class="block text-gray-600 text-sm font-medium mb-2">Group Name</label>
         <select name="group_name" id="group" class=" w-full p-2 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-purple-300">
            @foreach ($groups as $group)
            <option value="{{$group}}"> {{$group}}</option>
