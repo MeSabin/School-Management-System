@@ -7,45 +7,56 @@
    <title>Forgot-Password-Admin</title>
    @vite('resources/css/app.css')
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="tw-flex tw-items-center tw-justify-center tw-min-h-screen tw-bg-gray-100">
    @if (session('A_successEmail'))
    <x-alert>
-     <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-600 text-green-600 pr-8 pl-2 py-4 rounded-sm">
-       <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+     <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+       <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
        <h3>{{ session('A_successEmail') }}</h3>
      </div>
    </x-alert>
- @endif
+   @endif
    @if (session('A_tokenError'))
    <x-alert>
-     <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-red-500 text-red-500 pr-8 pl-2 py-4 rounded-sm">
-       <img src="{{ asset('images/error.png') }}" alt="" class="w-6 mr-2">
+     <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-red-500 tw-text-red-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+       <img src="{{ asset('images/error.png') }}" alt="" class="tw-w-6 tw-mr-2">
        <h3>{{ session('A_tokenError') }}</h3>
      </div>
    </x-alert>
- @endif
-   <div class="bg-white rounded-xl px-6 pb-5 pt-2 shadow-custom">
-      <h3 class="font-bold text-center text-lg text-gray-500 mb-2">Forgot Password</h3>
-      <p class="w-80 text-sm text-center text-gray-500 mb-6">We will send an email link to your account. Click that link to change your password</p>
+   @endif
+   <div class="tw-bg-white tw-rounded-xl tw-px-6 tw-pb-5 tw-pt-2 tw-shadow-custom">
+      <h3 class="tw-font-bold tw-text-center tw-text-lg tw-text-gray-500 tw-mb-2">Forgot Password</h3>
+      <p class="tw-w-80 tw-text-sm tw-text-center tw-text-gray-500 tw-mb-6">We will send an email link to your account. Click that link to change your password</p>
       <form action="{{ route('processAdminForgotPass') }}" method="POST">
          @csrf
          <div>
-         <label for="" class="block text-gray-600">Email</label>
+         <label for="" class="tw-block tw-text-gray-600">Email</label>
          <input type="text" 
          name="email"
-         class="w-80 block px-2 py-3 text-xs mt-1 border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('email') border-red-500 @enderror" placeholder="Your Registered Email">
-         <span class="text-red-700 text-xs mt-1 font-medium">
+         class="tw-w-80 tw-block tw-px-2 tw-py-3 tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg focus:tw-outline-none focus:tw-ring-1 focus:tw-ring-purple-400 @error('email') tw-border-red-500 @enderror" placeholder="Your Registered Email">
+         <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
          @error('email')
              {{$message}}
          @enderror
+         </span>
       </div>
          <button 
          type="submit"
-         class="w-80 py-2 mt-8 mb-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 duration-200">
+         id="button"
+         class="tw-w-80 tw-flex tw-items-center tw-justify-center tw-py-2 tw-mt-8 tw-mb-2 tw-bg-purple-600 tw-text-white tw-font-medium tw-rounded-lg hover:tw-bg-purple-700 tw-duration-300 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-500">
+          <x-button-spinner/>
          Send
          </button>
       </form>
-      <p class="text-center"><a href="{{ route('adminLogin') }}" class="text-purple-600 hover:underline text-center text-sm">Login</a></p>
+      <p class="tw-text-center"><a href="{{ route('adminLogin') }}" class="tw-text-purple-600 hover:tw-underline tw-text-center tw-text-sm">Login</a></p>
    </div>
 </body>
+<script>
+  let spinner = document.querySelector('#spinner');
+  let button = document.querySelector('#button');
+  
+  button.addEventListener('click', function() {
+    spinner.classList.remove('tw-hidden');
+  });
+</script>
 </html>

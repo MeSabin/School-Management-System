@@ -63,3 +63,18 @@ nav ul li a .dropdown{
 .showSubLis{
   display: block;
 }
+.searchBox{
+  background-color:  transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-left: 4px !important;
+  color: rgb(112, 112, 112) !important;
+}
+.searchBox::placeholder{
+  color: gray !important;
+}
+.searchBox:focus , .searchBox:active{
+  border: none !important;
+  outline: none !important; 
+  box-shadow: none !important;
+}

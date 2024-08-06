@@ -16,7 +16,7 @@ class AssignSubjectToTeacher extends Controller
      */
     public function index()
     {
-        $assignSubject = AssignSubjectToTeachers::simplePaginate(7);
+        $assignSubject = AssignSubjectToTeachers::paginate(3);
         return view('admin.viewAssignedModule_Teacher', ['subjects' =>$assignSubject]);
     }
 
@@ -83,6 +83,6 @@ class AssignSubjectToTeacher extends Controller
     public function destroy(string $id)
     {
         AssignSubjectToTeachers::find($id)->delete();
-        return redirect()->route('assignModuleTeacher.index')->with('deletesuccess', 'Teacher removed form module');
+        return redirect()->route('assignModuleTeacher.index')->with('deletesuccess', 'Teacher removed from module');
     }
 }

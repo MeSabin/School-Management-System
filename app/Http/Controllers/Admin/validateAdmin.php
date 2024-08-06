@@ -46,6 +46,7 @@ class validateAdmin extends Controller
     public function Logout()
     {
         Auth::guard('admin')->logout(); 
+        session()->flush();
         return redirect()->route('adminLogin')->with('A_logoutMsg', 'You have been logged out');
     }
     

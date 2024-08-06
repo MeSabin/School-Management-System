@@ -9,11 +9,30 @@ use App\Models\Admin\Group;
 use Illuminate\Support\Facades\Hash;
 class BulkStudents extends Controller
 {
-    public function showStudents()
-    {
-        $bulkStudents = Students::all();
-        return view('admin.viewBulkStudents', compact('bulkStudents'));
+    public function viewBulkStudents()
+{
+    $groups = Group::pluck('name');
+    return view('admin.viewBulkStudents', compact('groups'));
+}
+
+public function bulkStudentsTable(Request $request)
+{
+    $semester = $request->semester;
+    $group = $request->group;
+
+    $bulkStudents = Students::where([
+        'semester' => $semester,
+        'group' => $group,
+    ])->get();
+
+    if ($bulkStudents->isEmpty()) {
+        return redirect()->route('viewBulkStudents')->withInput()->with('emptyRecord', 'Student record is not present');
     }
+
+    session(['bulkStudents' => $bulkStudents]);
+    return redirect()->route('viewBulkStudents')->withInput();
+}
+
 
     public function showBulkAddForm()
     {
@@ -28,6 +47,11 @@ class BulkStudents extends Controller
             'file.required' => 'Please select a csv file*',
             'file.mimes' => 'Please select csv file only*',
             
+        ]);
+
+        Students::create([
+            'semester' => $request->semester,
+            'group' => $request->group
         ]);
 
         $file =$request->file;
@@ -47,8 +71,6 @@ class BulkStudents extends Controller
                 'dob' => date('Y-m-d', strtotime($data[3])),
                 'email' => $data[4],
                 'password' => Hash::make($data[5]),
-                'semester' => $request->semester,
-                'group' => $request->group
             ]);
         }
         return redirect()->route('students.index')->with('bulkSuccess', 'Bulk students added');

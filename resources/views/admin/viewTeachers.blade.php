@@ -3,103 +3,109 @@
 @section('pageName')
     List of Teachers
 @endsection
+
 @section('content')
     {{-- cdn link of tippy js for tooltip --}}
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+    {{-- CDN path for delete modal popup --}}
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
 @if (session('updateTeacher'))
 <x-alert>
-  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-500 text-green-500 pr-8 pl-2 py-4 rounded-sm">
-    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+  <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+    <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
     <h3>{{ session('updateTeacher') }}</h3>
   </div>
 </x-alert>
 @endif
+
 @if (session('registerTeacher'))
 <x-alert>
-  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-600 text-green-600 pr-8 pl-2 py-4 rounded-sm">
-    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+  <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+    <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
     <h3>{{ session('registerTeacher') }}</h3>
   </div>
 </x-alert>
 @endif
+
 @if (session('deleteTeacher'))
 <x-alert>
-  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-600 text-green-600 pr-8 pl-2 py-4 rounded-sm">
-    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+  <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+    <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
     <h3>{{ session('deleteTeacher') }}</h3>
   </div>
 </x-alert>
 @endif
-    <a href="{{ route('teachers.create') }}" class="bg-purple-600 hover:bg-purple-600 duration-300 text-white text-md font-medium rounded px-3 py-2">+ Register</a>
-    <div class="bg-white px-2 pt-4 pb-2 rounded-lg mt-6"> 
-      <h2 class="text-xl font-bold text-gray-600 mb-4">All Teachers Data</h2>
-      <div id= "tableContainer" class="overflow-x-auto">
-         
+
+    <a href="{{ route('teachers.create') }}" id="button" class="tw-bg-purple-600 tw-w-fit tw-flex tw-justify-center tw-items-center hover:tw-bg-purple-700 tw-duration-300 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-500 tw-text-white tw-text-md tw-font-medium tw-rounded-md tw-px-8 tw-py-2">
+      <x-button-spinner/>+ Register
+    </a>
+
+    <div class="tw-bg-white tw-px-2 tw-pt-4 tw-pb-2 tw-rounded-lg tw-mt-6"> 
+      <h2 class="tw-text-xl tw-font-bold tw-text-gray-600 tw-mb-4">All Teachers Data</h2>
+      <div id="tableContainer" class="tw-overflow-x-auto">
       </div>
-   <table class="min-w-full bg-white border">
-      <thead class="bg-purple-600 text-white">
-          <tr class="border">
-              <th class="py-2 px-4 font-semibold text-md text-start">ID</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Image</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Name</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Phone</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Email</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Role</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Action</th>
+      <table class="tw-min-w-full tw-bg-white tw-border">
+        <thead class="tw-bg-purple-600 tw-text-white">
+          <tr class="tw-border">
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">ID</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Image</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Name</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Phone</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Email</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Role</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Action</th>
           </tr> 
-      </thead>
-      <tbody>
-      @foreach ($teachers as $teacher)
-          <tr class="hover:bg-gray-100 border duration-200">
-            <td class="py-2 px-4 font-medium text-sm text-gray-600 text-start">{{$teacher->id}}.</td>
-            <td class="py-1 px-4 ">
-                <img src="{{asset('/uploads/'. $teacher->image)}}" class="w-9 rounded-lg border text-start" alt="Image"/>
+        </thead>
+        <tbody>
+        @foreach ($teachers as $teacher)
+          <tr class="tw-hover:bg-gray-100 tw-border tw-duration-200">
+            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->id }}.</td>
+            <td class="tw-py-1 tw-px-4">
+              <img src="{{ asset('/uploads/'. $teacher->image) }}" class="tw-w-9 tw-rounded-lg tw-border tw-text-start" alt="Image"/>
             </td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$teacher->name}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$teacher->phone}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$teacher->email}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$teacher->role}}</td>
-            <td class="py-1 px-4">
-              <div class="flex">
-                {{-- <div> --}}
-                <a href="{{ route('teachers.edit', $teacher->id) }}" id="edit">
-                  <span class="material-symbols-outlined text-gray-500 hover:text-gray-800 duration-500 mr-4">
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->name }}</td>
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->phone }}</td>
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->email }}</td>
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->role }}</td>
+            <td class="tw-py-1 tw-px-4">
+              <div class="tw-flex">
+                <a href="{{ route('teachers.edit', $teacher->id) }}" class="edit">
+                  <span class="material-symbols-outlined tw-text-gray-500 tw-hover:text-gray-800 tw-duration-500 tw-mr-4">
                     edit_square
                   </span>
                 </a>
-                  <form action="{{ route('teachers.destroy', $teacher->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type ="submit" id="delete">
-                      <span class="material-symbols-outlined text-red-400 hover:text-red-700 duration-500">
-                        delete
-                      </span>
-                    </button>
-                  </form>
-
+                <button data-modal-target="popup-modal-{{$teacher->id}}" class="delete" data-modal-toggle="popup-modal-{{$teacher->id}}">
+                  <span class="material-symbols-outlined tw-text-red-400 hover:tw-text-red-700 duration-500">
+                    delete
+                  </span>
+                </button>
+                @php
+                    $id =$teacher->id;
+                @endphp
+                <x-delete-modal type='teachers.destroy' :id="$id"/>
               </div>
-              </td>
+            </td>
           </tr>
-          @endforeach()
+        @endforeach
         </tbody>
-          </table>
-          <div class="flex justify-end mt-4">
-            <p class="">{{ $teachers->links() }}</p>
-          </div>
-        </div>
+      </table>
+      <div class="tw-flex bg-gray-50 tw-justify-end tw-gap-9 tw-mt-4">
+        <p class="">{{ $teachers->links() }}</p>
+      </div>
+    </div>
 
-        <script>
-          document.addEventListener('DOMContentLoaded', function(){
-            tippy('#edit', {
-              content: "Edit",
-              placement: 'top',
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        tippy('.edit', {
+          content: "Edit",
+          placement: 'top',
         });
-          tippy('#delete', {
-            content: "Delete",
-            placement: 'top'
+        tippy('.delete', {
+          content: "Delete",
+          placement: 'top'
         });
-        });
-            
-        </script>
+      });
+    </script>
 @endsection

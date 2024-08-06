@@ -13,7 +13,7 @@ class CS_Subjects extends Controller
      */
     public function index()
     {
-        $subjects =CS_Subject::simplePaginate(10);
+        $subjects =CS_Subject::paginate(3);
         // dd($subjects->all());
         return view('admin.viewAssignedModules_Semester', compact('subjects'));
     }

@@ -1,17 +1,19 @@
 @extends('admin.adminLayout')
+
 @section('pageName')
     Add Classes
 @endsection
+
 @section('content')
-<div class="mt-48 flex flex-column justify-start">
-   <img src="{{ asset('images/signup.svg') }}" alt="" class="w-6/12 h-[370px]">
-    <div class="bg-white p-6 pt-4 pb-0 mt-8 rounded-lg shadow-custom w-2/6 h-[100%]">
-        <h2 class="text-2xl font-bold text-gray-700 mb-6 text-center">Add Class</h2>
+<div class="tw-mt-48 tw-flex tw-flex-row tw-justify-start">
+   <img src="{{ asset('images/signup.svg') }}" alt="" class="tw-w-6/12 tw-h-[370px]">
+    <div class="tw-bg-white tw-p-6 tw-pt-4 tw-pb-0 tw-mt-8 tw-rounded-lg tw-shadow-custom tw-w-2/6 tw-h-[100%]">
+        <h2 class="tw-text-2xl tw-font-bold tw-text-gray-700 tw-mb-6 tw-text-center">Add Class</h2>
         <form action="{{route('storeClassDetails')}}" method="POST">
             @csrf
-            <div class="mb-4">
-                <label for="semester" class="block text-gray-600 font-bold mb-2">Choose Semester</label>
-                <select name="semester" id="semester" class="block w-full text-sm px-3 py-2 border rounded-md text-gray-600 focus:outline-none focus:ring focus:border-blue-300">
+            <div class="tw-mb-4">
+                <label for="semester" class="tw-block tw-text-gray-600 tw-font-bold tw-mb-2">Choose Semester</label>
+                <select name="semester" id="semester" class="tw-block tw-w-full tw-text-sm tw-px-3 tw-py-2 tw-border tw-rounded-md tw-text-gray-600 tw-focus:outline-none tw-focus:ring tw-focus:border-blue-300">
                     <option value="Semester 1">Semester 1</option>
                     <option value="Semester 2">Semester 2</option>
                     <option value="Semester 3">Semester 3</option>
@@ -22,20 +24,18 @@
                     <option value="Semester 8">Semester 8</option>
                 </select>
                 @error('semester')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="tw-text-red-500 tw-text-sm">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="mb-6">
-                <label for="" class="block text-gray-600 font-bold mb-2">Group Name</label>
-                <input type="text" name="group_name" id="group" class="block text-sm w-full px-3 py-2 border rounded-md text-gray-600 focus:outline-none focus:ring focus:border-blue-300 @error('group_name')
-                   border-red-500
-                @enderror" value="{{ old('group_name') }}" placeholder="Group/Section name">
+            <div class="tw-mb-6">
+                <label for="" class="tw-block tw-text-gray-600 tw-font-bold tw-mb-2">Group Name</label>
+                <input type="text" name="group_name" id="group" class="tw-block tw-text-sm tw-w-full tw-px-3 tw-py-2 tw-border tw-rounded-md tw-text-gray-600 tw-focus:outline-none tw-focus:ring tw-focus:border-blue-300 @error('group_name') tw-border-red-500 @enderror" value="{{ old('group_name') }}" placeholder="Group/Section name">
                 @error('group_name')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="tw-text-red-700 tw-text-xs tw-font-medium">{{ $message }}</span>
                 @enderror
             </div>
             <div class="">
-                <button type="submit" class="bg-purple-600 w-full hover:bg-purple-700 mb-6 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <button type="submit" class="tw-bg-purple-600 tw-w-full tw-font-medium hover:tw-bg-purple-700 tw-duration-300 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-500 tw-mb-6 tw-text-white tw-py-2 tw-px-4 tw-rounded-md">
                     Add Class
                 </button>
             </div>

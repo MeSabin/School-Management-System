@@ -3,124 +3,117 @@
 @section('pageName')
     List of Students
 @endsection
-@section('studentReg_li')
-<ul class="pl-4">
-    <div class="flex justify-start">
-      <a href="{{route('students.index')}}">
-        <li class="mr-4 border-b-4 {{Route::is('students*')? 'border-purple-600' : ''}} ">Manual Registration</li>
-      </a>
-        <a href="{{route('showBulkAddForm')}}">
-        <li class="border-b-4 {{Route::is('showBulkAddForm*')? 'border-purple-600' : ''}}">Bulk Registration</li>
-      </a>
-    </div>
-</ul>
-@endsection
+
 @section('content')
-    {{-- cdn link of tippy js for tooltip --}}
+    {{-- CDN link for Tippy.js for tooltip --}}
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-@if (session('addStudent'))
-<x-alert>
-  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-500 text-green-500 pr-8 pl-2 py-4 rounded-sm">
-    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
-    <h3>{{ session('addStudent') }}</h3>
-  </div>
-</x-alert>
-@endif
-@if (session('updateStudent'))
-<x-alert>
-  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-500 text-green-500 pr-8 pl-2 py-4 rounded-sm">
-    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
-    <h3>{{ session('updateStudent') }}</h3>
-  </div>
-</x-alert>
-@endif
-@if (session('delStudent'))
-<x-alert>
-  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-500 text-green-500 pr-8 pl-2 py-4 rounded-sm">
-    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
-    <h3>{{ session('delStudent') }}</h3>
-  </div>
-</x-alert>
-@endif
-@if (session('bulkSuccess'))
-<x-alert>
-  <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-500 text-green-500 pr-8 pl-2 py-4 rounded-sm">
-    <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
-    <h3>{{ session('bulkSuccess') }}</h3>
-  </div>
-</x-alert>
-@endif
-<div class=" mt-44">
-    <a href="{{ route('students.create') }}" class="bg-purple-600 hover:bg-purple-600 duration-300 text-white text-md font-medium rounded px-3 py-2">+ Register</a>
-    <div class="bg-white px-2 pt-4 pb-2 rounded-lg mt-6"> 
-      <h2 class="text-xl font-bold text-gray-600 mb-4">All Students Data</h2>
-      <div id= "tableContainer" class="overflow-x-auto">
-         
-      </div>
-   <table class="min-w-full bg-white border">
-      <thead class="bg-purple-600 text-white">
-          <tr class="border">
-              <th class="py-2 px-4 font-semibold text-md text-start">Roll</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Name</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Semester</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Group</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Phone</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Email</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Date of Birth</th>
-              <th class="py-2 px-4 font-semibold text-md text-start">Action</th>
-          </tr> 
-      </thead>
-      <tbody>
-      @foreach ($students as $student)
-          <tr class="hover:bg-gray-100 border duration-200">
-            <td class="py-2 px-4 font-medium text-sm text-gray-600 text-start">{{$student->roll}}.</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$student->name}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$student->semester}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$student->group}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$student->phone}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$student->email}}</td>
-            <td class="py-1 px-4 font-medium text-sm text-gray-600 text-start">{{$student->dob}}</td>
-            <td class="py-1 px-4">
-              <div class="flex">
-                {{-- <div> --}}
-                <a href="{{route('students.edit', $student->id)}}" id="edit">
-                  <span class="material-symbols-outlined text-gray-500 hover:text-gray-800 duration-500 mr-4">
-                    edit_square
-                  </span>
-                </a>
-                  <form action="{{route('students.destroy', $student->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type ="submit" id="delete">
-                      <span class="material-symbols-outlined text-red-400 hover:text-red-700 duration-500">
-                        delete
-                      </span>
-                    </button>
-                  </form>
+     {{-- CDN path for delete modal popup --}}
+     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
 
-              </div>
-              </td>
-          </tr>
-          @endforeach()
-        </tbody>
-          </table>
-          {{-- <div class="flex justify-end mt-4">
-            <p class="">{{ $teachers->links() }}</p>
-          </div> --}}
-        </div>
+    @if (session('addStudent'))
+    <x-alert>
+      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+        <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
+        <h3>{{ session('addStudent') }}</h3>
       </div>
-        <script>
-          document.addEventListener('DOMContentLoaded', function(){
-            tippy('#edit', {
-              content: "Edit",
-              placement: 'top',
+    </x-alert>
+    @endif
+
+    @if (session('updateStudent'))
+    <x-alert>
+      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+        <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
+        <h3>{{ session('updateStudent') }}</h3>
+      </div>
+    </x-alert>
+    @endif
+
+    @if (session('delStudent'))
+    <x-alert>
+      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+        <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
+        <h3>{{ session('delStudent') }}</h3>
+      </div>
+    </x-alert>
+    @endif
+
+    @if (session('bulkSuccess'))
+    <x-alert>
+      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+        <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
+        <h3>{{ session('bulkSuccess') }}</h3>
+      </div>
+    </x-alert>
+    @endif
+
+    <div class="tw-mt-44">
+        <a href="{{ route('students.create') }}" class="tw-bg-purple-600  hover:tw-bg-purple-700 tw-duration-200 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-500 tw-text-white tw-text-md tw-font-medium tw-rounded-md tw-px-8 tw-py-2">+ Register</a>
+        <div class="tw-bg-white tw-px-2 tw-pt-4 tw-pb-2 tw-rounded-lg tw-mt-6"> 
+          <h2 class="tw-text-xl tw-font-bold tw-text-gray-600 tw-mb-4">All Students Data</h2>
+          <div id="tableContainer" class="tw-overflow-x-auto">
+          </div>
+          <table class="tw-min-w-full tw-bg-white tw-border">
+            <thead class="tw-bg-purple-600 tw-text-white">
+                <tr class="tw-border">
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Roll</th>
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Name</th>
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Semester</th>
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Group</th>
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Phone</th>
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Email</th>
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Date of Birth</th>
+                    <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Action</th>
+                </tr> 
+            </thead>
+            <tbody>
+            @foreach ($students as $student)
+                <tr class="tw-hover:bg-gray-100 tw-border tw-duration-200">
+                  <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $student->roll }}.</td>
+                  <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $student->name }}</td>
+                  <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $student->semester }}</td>
+                  <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $student->group }}</td>
+                  <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $student->phone }}</td>
+                  <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $student->email }}</td>
+                  <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $student->dob }}</td>
+                  <td class="tw-py-1 tw-px-4">
+                    <div class="tw-flex">
+                      <a href="{{ route('students.edit', $student->id) }}" class="edit">
+                        <span class="material-symbols-outlined tw-text-gray-500 tw-hover:text-gray-800 tw-duration-500 tw-mr-4">
+                          edit_square
+                        </span>
+                      </a>
+                      <button data-modal-target="popup-modal-{{$student->id}}" class="delete" data-modal-toggle="popup-modal-{{$student->id}}">
+                        <span class="material-symbols-outlined tw-text-red-400 hover:tw-text-red-700 duration-500">
+                          delete
+                        </span>
+                      </button>
+                      @php
+                          $id =$student->id;
+                      @endphp
+                      <x-delete-modal type='students.destroy' :id="$id"/>
+                    </div>
+                  </td>
+                </tr>
+            @endforeach
+            </tbody>
+          </table>
+          <div class="tw-flex tw-justify-end tw-mt-4">
+            <p class="">{{ $students->links() }}</p>
+          </div>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        tippy('.edit', {
+          content: "Edit",
+          placement: 'top',
         });
-          tippy('#delete', {
-            content: "Delete",
-            placement: 'top'
+        tippy('.delete', {
+          content: "Delete",
+          placement: 'top'
         });
-        });
-            
-        </script>
+      });
+    </script>
 @endsection

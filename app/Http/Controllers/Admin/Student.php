@@ -15,7 +15,7 @@ class Student extends Controller
      */
     public function index()
     {
-        $students = Students::all();
+        $students = Students::paginate(3);
         return view('admin.viewStudents', compact('students'));
     }
 
@@ -36,6 +36,7 @@ class Student extends Controller
         $request->validate([
             'fullName' => 'required',
             'phone' => 'required|min:10',
+            'roll' => 'required|numeric',
             'email' => 'required|email|unique:students,email',
             'dob' => 'required',
             'password' =>'required|min:6'
@@ -43,6 +44,8 @@ class Student extends Controller
             'fullName.required' => 'Student name is required*',
             'phone.required' => 'Phone number is required*',
             'phone.min' => 'Phone number should be of 10 digits*',
+            'roll.required' => 'Roll number is required*',
+            'roll.numeric' => 'Roll number must be numeric*',
             'email.required' => 'Email filed is required*',
             'email.email' => 'Email format is invalid*',
             'email.unique' => 'Email already exists*',
@@ -75,8 +78,13 @@ class Student extends Controller
      */
     public function edit(string $id)
     {
+        $groups= Group::pluck('name');
         $student =Students::find($id);
-        return view('admin.updateStudent', compact('student'));
+
+        return view('admin.updateStudent', [
+            'group' => $groups,
+            'student' => $student,
+        ]);
     }
 
     /**
@@ -84,6 +92,7 @@ class Student extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $student =Students::find($id);
         $request->validate([
             'fullName' => 'required',
             'phone' => 'required|min:10',
@@ -99,12 +108,15 @@ class Student extends Controller
         ]);
         $student = Students::find($id);
         $student->name = $request->fullName;
+        $student->roll = $request->roll;
+        $student->semester = $request->semester;
         $student->phone = $request->phone;
         $student->dob = $request->dob;
+        $student ->group = $request->group_name;
         $student->email = $request->email;
         $student->save();
 
-        return redirect()->route('students.index')->with('updateStudent', 'Student data updated');
+        return redirect()->route('students.index')->with('updateStudent', 'Student details updated');
     }
 
     /**
@@ -115,4 +127,5 @@ class Student extends Controller
         Students::find($id)->delete();
         return redirect()->route('students.index')->with('delStudent', 'Student Deleted Successfully');
     }
+
 }

@@ -38,8 +38,10 @@ Route::prefix('admin')->group(function() {
    Route::get('/curriculumns/viewClass', [AdminPagesController::class, 'viewGroups'])->name('viewGroups')->middleware(validAdmin::class);
    Route::post ('/storeClassDetails', [AdminPagesController::class , 'storeClassDetails'])->name('storeClassDetails')->middleware(validAdmin::class);
    Route::delete('/deleteClassDetails/{id}', [AdminPagesController::class, 'deleteClass'])->name('deleteClassDetails');
-   Route::get ('bulkAddForm', [BulkStudents::class , 'showBulkAddForm'])->name('showBulkAddForm')->middleware(validAdmin::class, PreventBackHistory::class);
-   Route::post ('storeBulkStudents', [BulkStudents::class , 'storeBulkStudents'])->name('storeBulkStudents')->middleware(validAdmin::class, PreventBackHistory::class);
+   Route::get('bulkAddForm', [BulkStudents::class , 'showBulkAddForm'])->name('showBulkAddForm')->middleware(validAdmin::class, PreventBackHistory::class);
+   Route::post('storeBulkStudents', [BulkStudents::class , 'storeBulkStudents'])->name('storeBulkStudents')->middleware(validAdmin::class, PreventBackHistory::class);
+   Route::get('viewBulkStudents', [BulkStudents::class , 'viewBulkStudents'])->name('viewBulkStudents')->middleware(validAdmin::class, PreventBackHistory::class);
+   Route::post('bulkStudentsTable', [BulkStudents::class , 'bulkStudentsTable'])->name('bulkStudentsTable')->middleware(validAdmin::class, PreventBackHistory::class);
 });
 
 Route::post('/teacher/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');

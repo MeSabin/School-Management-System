@@ -7,47 +7,49 @@
    <title>Reset-Password-Admin</title>
    @vite('resources/css/app.css')
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="tw-flex tw-items-center tw-justify-center tw-min-h-screen tw-bg-gray-100">
    @if (session('A_resetSuccess'))
    <x-alert>
-     <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-green-600 text-green-600 pr-8 pl-2 py-4 rounded-sm">
-       <img src="{{ asset('images/accept.png') }}" alt="" class="w-6 mr-2">
+     <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+       <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
        <h3>{{ session('A_resetSuccess') }}</h3>
      </div>
    </x-alert>
- @endif
-   <div class="bg-white rounded-xl px-6 pb-5 pt-2 shadow-custom">
-      <h3 class="font-bold text-center text-lg text-gray-500 mb-2">Reset Password</h3>
+   @endif
+   <div class="tw-bg-white tw-rounded-xl tw-px-6 tw-pb-5 tw-pt-2 tw-shadow-custom">
+      <h3 class="tw-font-bold tw-text-center tw-text-lg tw-text-gray-500 tw-mb-2">Reset Password</h3>
       <form action="{{ route('processResetPassword') }}" method="POST">
          @csrf
          <input type="hidden" name="token" value="{{$token}}">
-         <div class="mt-6">
-         <label for="" class="block text-gray-600">New Password</label>
+         <div class="tw-mt-6">
+         <label for="" class="tw-block tw-text-gray-600">New Password</label>
          <input type="password" 
          name="password"
-         class="w-80 block px-2 py-3 text-xs mt-1 border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('password') border-red-500 @enderror" placeholder="Your new password">
-         <span class="text-red-700 text-xs mt-1 font-medium">
+         class="tw-w-80 tw-block tw-px-2 tw-py-3 tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg focus:tw-outline-none focus:tw-ring-1 focus:tw-ring-purple-400 @error('password') tw-border-red-500 @enderror" placeholder="Your new password">
+         <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
          @error('password')
              {{$message}}
          @enderror
+         </span>
       </div>
-         <div class="mt-6">
-         <label for="" class="block text-gray-600">Confirm Password</label>
+         <div class="tw-mt-6">
+         <label for="" class="tw-block tw-text-gray-600">Confirm Password</label>
          <input type="password" 
          name="confirm_password"
-         class="w-80 block px-2 py-3 text-xs mt-1 border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('confirm_password') border-red-500 @enderror" placeholder="Re-enter new password">
-         <span class="text-red-700 text-xs mt-1 font-medium">
+         class="tw-w-80 tw-block tw-px-2 tw-py-3 tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg focus:tw-outline-none focus:tw-ring-1 focus:tw-ring-purple-400 @error('confirm_password') tw-border-red-500 @enderror" placeholder="Re-enter new password">
+         <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
          @error('confirm_password')
              {{$message}}
          @enderror
+         </span>
       </div>
          <button 
          type="submit"
-         class="w-80 py-2 mt-6 mb-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 duration-200">
+         class="tw-w-80 tw-py-2 tw-mt-6 tw-mb-2 tw-font-medium tw-bg-purple-600 tw-text-white tw-rounded-lg hover:tw-bg-purple-700 tw-duration-300 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-500">
          Reset Password
          </button>
       </form>
-      <p class="text-center"><a href="{{ route('adminLogin') }}" class="text-purple-600 hover:underline text-center text-sm">Click here to login</a></p>
+      <p class="tw-text-center"><a href="{{ route('adminLogin') }}" class="tw-text-purple-600 hover:tw-underline tw-text-center tw-text-sm">Click here to login</a></p>
    </div>
 </body>
 </html>

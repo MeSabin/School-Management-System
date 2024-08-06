@@ -81,7 +81,7 @@
     </div>
       <button
         type="submit"
-        class="w-full py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 duration-200"
+        class="w-full py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 duration-200 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500"
       >
         Login
       </button>
