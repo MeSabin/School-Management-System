@@ -91,7 +91,7 @@
         @endforeach
         </tbody>
       </table>
-      <div class="tw-flex bg-gray-50 tw-justify-end tw-gap-9 tw-mt-4">
+      <div class="tw-flex tw-justify-end tw-mt-4">
         <p class="">{{ $teachers->links() }}</p>
       </div>
     </div>

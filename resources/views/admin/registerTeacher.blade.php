@@ -99,6 +99,7 @@
               type="file"
               name="image"
               id="image"
+              value="{{ old('image') }}"
               class="tw-w-full tw-px-2 tw-py-2.5 tw-text-xs tw-border-gray-400 tw-border tw-rounded-md tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-purple-400 @error('image') tw-border-red-500 @enderror"
             />
             <span class="tw-text-red-700 tw-text-xs tw-font-medium">

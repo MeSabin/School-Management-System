@@ -16,7 +16,7 @@ class AssignSubjectToTeacher extends Controller
      */
     public function index()
     {
-        $assignSubject = AssignSubjectToTeachers::paginate(3);
+        $assignSubject = AssignSubjectToTeachers::paginate(7);
         return view('admin.viewAssignedModule_Teacher', ['subjects' =>$assignSubject]);
     }
 

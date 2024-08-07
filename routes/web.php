@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\BulkStudents;
 
 Route::view('/', 'teachers/login')->name('teacherLogin');
 Route::view('/admin', 'admin/login')->name('adminLogin');
+Route::view('/student-login', 'students/login')->name('studentLogin');
 Route::view('/layout', 'mainDashLayout')->name('layout');
 
 

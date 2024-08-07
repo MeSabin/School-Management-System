@@ -71,8 +71,7 @@
         @endforeach
       </tbody>
     </table>
-    
-    <div>
+    <div class="tw-flex tw-justify-end tw-mt-4">
       {{$subjects->links()}}
     </div>
   </div>

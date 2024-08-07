@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Students;
 use App\Models\Admin\Group;
+use App\Mail\studentCredentials;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 class BulkStudents extends Controller
 {
     public function viewBulkStudents()
@@ -49,10 +51,6 @@ public function bulkStudentsTable(Request $request)
             
         ]);
 
-        Students::create([
-            'semester' => $request->semester,
-            'group' => $request->group
-        ]);
 
         $file =$request->file;
         $fileContents = file($file->getPathname());
@@ -71,8 +69,17 @@ public function bulkStudentsTable(Request $request)
                 'dob' => date('Y-m-d', strtotime($data[3])),
                 'email' => $data[4],
                 'password' => Hash::make($data[5]),
+                'semester' => $request->semester,
+                'group' => $request->group
             ]);
+
+            $email = $data[4];
+            $studentName = $data[0];
+            $password = $data[5];
+
+            Mail::to($email)->send(new studentCredentials($email, $studentName, $password));
         }
+
         return redirect()->route('students.index')->with('bulkSuccess', 'Bulk students added');
 
     }

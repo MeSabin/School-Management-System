@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Students;
 use App\Models\Admin\Group;
+use App\Mail\studentCredentials;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Mail;
 class Student extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class Student extends Controller
      */
     public function index()
     {
-        $students = Students::paginate(3);
+        $students = Students::paginate(7);
         return view('admin.viewStudents', compact('students'));
     }
 
@@ -60,8 +61,14 @@ class Student extends Controller
             'dob' => $request->dob,
             'group' =>$request->group_name,
             'email' => $request->email,
-            'password' => Hash::make($request->email),
+            'password' => Hash::make($request->password),
         ]);
+        $email = $request->email;
+        $studentName = $request->fullName;
+        $password = $request->password;
+
+        Mail::to($email)->send(new studentCredentials($email, $studentName, $password));
+
         return redirect()->route('students.index')->with('addStudent', 'Student added successfully');
     }
 

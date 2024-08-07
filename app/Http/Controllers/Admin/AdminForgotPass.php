@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\ResetPasswordEmail;
 use App\Models\Admin\Admin;
+ 
 class AdminForgotPass extends Controller
 {
     public function showForgotPassForm(){

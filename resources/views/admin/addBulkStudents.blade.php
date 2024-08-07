@@ -55,7 +55,12 @@
     </script>
     </div>
     <div class="tw-mt-6">
-        <button type="submit" class="tw-w-full tw-font-medium tw-mt-1 tw-bg-green-600 tw-px-4 tw-py-2 tw-rounded-md tw-text-white hover:tw-bg-green-700 tw-duration-300 tw-focus-within:ring-2 tw-focus-within:ring-offset-2 tw-focus-within:ring-green-500">Register</button>
+        <button type="submit" 
+        id="button"
+        class="tw-w-full tw-flex tw-justify-center tw-items-center tw-font-medium tw-mt-1 tw-bg-purple-600 tw-px-4 tw-py-2 tw-rounded-md tw-text-white hover:tw-bg-purple-700 tw-duration-300 tw-focus-within:ring-2 tw-focus-within:ring-offset-2 focus-within:tw-ring-purple-500"
+        >
+        <x-button-spinner/>
+        Register</button>
     </div>
 </form>
 </div>
