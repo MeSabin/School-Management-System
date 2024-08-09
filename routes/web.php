@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\CS_Subjects;
 use App\Http\Controllers\Admin\AssignSubjectToTeacher;
 use App\Http\Controllers\Admin\Student;
 use App\Http\Controllers\Admin\BulkStudents;
+use App\Http\Controllers\Teacher\TeacherPagesController;
 
 
 Route::view('/', 'teachers/login')->name('teacherLogin');
@@ -45,6 +46,12 @@ Route::prefix('admin')->group(function() {
    Route::post('bulkStudentsTable', [BulkStudents::class , 'bulkStudentsTable'])->name('bulkStudentsTable')->middleware(validAdmin::class, PreventBackHistory::class);
 });
 
-Route::post('/teacher/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');
-Route::get('/teacher/dashboard',[validateLogin::class, 'teacherDashboard'])->name('teacherDash')->middleware(validTeacher::class, PreventBackHistory::class);
-Route::get('/teacher/logout',[validateLogin::class, 'Logout'])->name('logoutTeacher');
+Route::prefix('/teacher')->group(function(){
+   Route::post('/login', [validateLogin::class, 'Login'])->name('checkTeacherLogin');
+   Route::get('/dashboard',[validateLogin::class, 'teacherDashboard'])->name('teacherDash')->middleware(validTeacher::class, PreventBackHistory::class);
+   Route::get('/logout',[validateLogin::class, 'Logout'])->name('logoutTeacher');
+   Route::get('/students-section',[TeacherPagesController::class, 'getTeacherModules_Groups'])->name('studentsSection');
+   Route::post('/students',[TeacherPagesController::class, 'getAssignedStudents'])->name('viewStudents');
+   Route::get('/assignments',[TeacherPagesController::class, 'assignments'])->name('assignments');
+   Route::post('/post-assignment',[TeacherPagesController::class, 'storeAssignmentDetails'])->name('postAssignment');
+});

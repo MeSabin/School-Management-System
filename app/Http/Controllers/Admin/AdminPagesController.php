@@ -35,4 +35,5 @@ class AdminPagesController extends Controller
         Group::find($id)->delete();
         return redirect()->route('viewGroups')->with('deleteGroups', 'Group details has been deleted');
     }
+    
 }

@@ -38,6 +38,7 @@ class validateLogin extends Controller
 
     public function Logout(Request $request) {
         Auth::guard('web')->logout();
+        session()->flush();
         return redirect()->route('teacherLogin')->with('T_logoutMsg', 'You have been logged out');
     }
 }

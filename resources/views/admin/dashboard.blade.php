@@ -20,20 +20,29 @@
 
 <main class="tw-mt-6">
   <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
-    <div class="tw-bg-green-100 tw-p-6 tw-rounded-lg tw-shadow-md">
-      <h3 class="tw-text-lg tw-font-semibold">Teachers</h3>
-      <p class="tw-mt-2 tw-text-gray-600">Content for card 1.</p>
+    <div class="tw-bg-green-100 tw-p-6 tw-rounded-lg tw-shadow-md tw-flex tw-justify-between tw-items-center">
+      <div>
+        <h3 class="tw-text-lg tw-text-gray-500 tw-font-semibold">Teachers</h3>
+        <h1 class="tw-mt-2 tw-text-xl tw-font-semibold tw-text-gray-600">{{$total_teachers}}</h1>
+      </div>
+      <img src="{{asset('images/teacher.png')}}" alt="" class="tw-w-14 tw-h-14">
     </div>
-    <div class="tw-bg-blue-100 tw-p-6 tw-rounded-lg tw-shadow-md">
-      <h3 class="tw-text-lg tw-font-semibold">Students</h3>
-      <p class="tw-mt-2 tw-text-gray-600">Content for card 2.</p>
+    <div class="tw-bg-blue-100 tw-p-6 tw-rounded-lg tw-shadow-md tw-flex tw-justify-between tw-items-center">
+      <div>
+        <h3 class="tw-text-lg tw-text-gray-500 tw-font-semibold">Students</h3>
+        <p class="tw-mt-2 tw-text-xl tw-font-semibold tw-text-gray-600">{{$total_students}}</p>
+      </div>
+      <img src="{{asset('images/students.png')}}" alt="" class="tw-w-14 tw-h-14">
     </div>
-    <div class="tw-bg-purple-100 tw-p-6 tw-rounded-lg tw-shadow-md">
-      <h3 class="tw-text-lg tw-font-semibold">Card 3</h3>
-      <p class="tw-mt-2 tw-text-gray-600">Content for card 3.</p>
+    <div class="tw-bg-purple-100 tw-p-6 tw-rounded-lg tw-shadow-md tw-flex tw-justify-between tw-items-center">
+      <div>
+        <h3 class="tw-text-lg tw-text-gray-500 tw-font-semibold">Modules</h3>
+        <p class="tw-mt-2 tw-text-xl tw-font-semibold tw-text-gray-600">{{$total_subjects}}</p>
     </div>
+    <img src="{{asset('images/books.png')}}" alt="" class="tw-w-14 tw-h-14">
+  </div>
     <div class="tw-bg-yellow-100 tw-p-6 tw-rounded-lg tw-shadow-md">
-      <h3 class="tw-text-lg tw-font-semibold">Card 4</h3>
+      <h3 class="tw-text-lg tw-text-gray-500 tw-font-semibold">Card 4</h3>
       <p class="tw-mt-2 tw-text-gray-600">Content for card 4.</p>
     </div>
   </div>

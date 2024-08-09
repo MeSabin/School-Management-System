@@ -40,7 +40,8 @@
     <table class="tw-w-full tw-bg-white tw-border">
       <thead class="tw-bg-purple-600 tw-text-white">
         <tr class="tw-border">
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">ID</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Module ID</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Teacher ID</th>
           <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Teacher</th>
           <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Module Name</th>
           <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Semester</th>
@@ -52,6 +53,7 @@
         @foreach ($subjects as $subject)
           <tr class="hover:tw-bg-gray-100 tw-border duration-200">
             <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$subject->id}}.</td>
+            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$subject->teacher_id}}</td>
             <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$subject->teacher_name}}</td>
             <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$subject->module}}</td>
             <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$subject->semester}}</td>

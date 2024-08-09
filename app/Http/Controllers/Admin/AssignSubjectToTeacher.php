@@ -44,11 +44,21 @@ class AssignSubjectToTeacher extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'teacher_id' => 'required|numeric',
+
+        ],
+    [
+        'teacher_id.required' =>'Teacher id is required*',
+        'teacher_id.numeric' =>'Teacher id must be in number*',
+    ]);
         AssignSubjectToTeachers::create([
+            'teacher_id' =>$request->teacher_id,
             'teacher_name' =>$request->teacher_name,
             'semester' =>$request->semester,
             'module' =>$request->module_name,
             'group' =>$request->group_name,
+
         ]);
         return redirect()->route('assignModuleTeacher.index')->with('moduleAssign', 'Module assigned to Teacher');
     }

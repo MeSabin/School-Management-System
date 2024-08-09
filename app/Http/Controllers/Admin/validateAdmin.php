@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\App\Models\Admin\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Students;
+use App\Models\Admin\CS_Subject;
+use App\Models\Teacher\Teacher;
 
 class validateAdmin extends Controller
 {
@@ -38,7 +41,20 @@ class validateAdmin extends Controller
 
 
     public function adminDashboard(){
-        return view('admin.dashboard');
+        $students = Students::all();
+        $studentsCount = $students->count();
+
+        $teachers = Teacher::all();
+        $teachersCount = $teachers->count();
+        
+        $subjects = CS_Subject::all();
+        $subjectsCount = $subjects->count();
+
+        return view('admin.dashboard', [
+            'total_students' => $studentsCount,
+            'total_teachers' => $teachersCount,
+            'total_subjects' => $subjectsCount,
+        ]);
 
     }
 

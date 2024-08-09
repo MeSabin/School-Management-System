@@ -5,88 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   @vite('resources/css/app.css')
-
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
-  @if (session('T_loginError'))
+<body class="tw-flex tw-items-center tw-justify-center tw-min-h-screen tw-bg-gray-100">
+  @if (session('A_loginError'))
     <x-alert>
-      <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-red-500 text-red-400 pr-8 pl-2 py-4 rounded-sm">
-        <img src="{{ asset('images/error.png') }}" alt="" class="w-6 mr-2">
-        <h3>{{ session('T_loginError') }}</h3>
+      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-red-500 tw-text-red-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+        <img src="{{ asset('images/error.png') }}" alt="" class="tw-w-6 tw-mr-2">
+        <h3>{{ session('A_loginError') }}</h3>
       </div>
     </x-alert>
   @endif
-  @if (session('T_logoutMsg'))
+  @if (session('A_logoutMsg'))
     <x-alert>
-      <div id="error" class="opacity-0 absolute top-5 right-5 flex items-center justify-center bg-white shadow-md border-2 border-l-4 border-blue-500 text-blue-500 pr-8 pl-2 py-4 rounded-sm">
-        <img src="{{ asset('images/information.png') }}" alt="" class="w-6 mr-2">
-        <h3>{{ session('T_logoutMsg') }}</h3>
+      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-blue-500 tw-text-blue-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+        <img src="{{ asset('images/information.png') }}" alt="" class="tw-w-6 tw-mr-2">
+        <h3>{{ session('A_logoutMsg') }}</h3>
       </div>
     </x-alert>
   @endif
-  <img src="{{ asset('images/signup.svg') }}" alt="" class="w-6/12 h-[400px]">
-  <div class="bg-white px-5 pb-5 pt-2 rounded-xl shadow-custom ">
-    <h2 class="text-xl text-center font-bold mb-3 text-purple-600">Login as Tutor</h2>
-   
-    <form action="{{ route('checkTeacherLogin')}}" method="post" id="formId">
+  @if (session('A_successResetPass'))
+    <x-alert>
+      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+        <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
+        <h3>{{ session('A_successResetPass') }}</h3>
+      </div>
+    </x-alert>
+  @endif
+  <img src="{{ asset('images/signup.svg') }}" alt="" class="tw-w-6/12 tw-h-[400px]">
+  <div class="tw-bg-white tw-px-5 tw-pb-5 tw-pt-2 tw-rounded-xl tw-shadow-custom ">
+    <h2 class="tw-text-xl tw-text-center tw-font-bold tw-mb-3 tw-text-purple-600">Login as Tutor</h2>
+    <form action="{{ route('checkTeacherLogin')}}" method="post">
       @csrf
-      <div class="mb-3 " >
-        <label class="block text-gray-700 text-sm font-medium">Email</label>
+      <div class="tw-mb-3 " >
+        <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-medium">Email</label>
         <input
           type="email"
           name="email"
-          class="w-80 px-2 py-3 mt-1 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('email') border-red-500 @enderror"
+          class="tw-w-80 tw-px-2 tw-py-3 tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-purple-400 @error('email') tw-border-red-500 @enderror"
           placeholder="Your email"
-          @if (isset($_COOKIE['email']))
+          @if (isset($_COOKIE['email']))  
           value="{{ $_COOKIE['email']}}"
           @endif
         />
-        <span class="text-red-700 text-xs mt-1 font-medium block">
+        <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
           @error('email')
               {{$message}}
           @enderror
         </span>
       </div>
-
-      <div class="mb-3">
-        <label class="block text-gray-700 text-sm font-medium">Password</label>
-        <div class="relative">
+      <div class="">
+        <label class="tw-block tw-text-gray-700 tw-text-sm tw-font-medium">Password</label>
+        <div class="tw-relative">
           <input
             type="password"
             name="password"
             id="password"
-            class="w-full px-2 py-3 mt-1 text-xs border-gray-400 border rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-400 @error('password') border-red-500 @enderror"
+            class="tw-w-full tw-px-2 tw-py-3 tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-purple-400 @error('password') tw-border-red-500 @enderror"
             placeholder="Your password"
-            @if (isset($_COOKIE['password']))
+            @if (isset($_COOKIE['password']))  
             value="{{ $_COOKIE['password']}}"
             @endif
           />
           
-          <img src="{{ asset('images/close_eye.png') }}" alt="Icon" id="eyeIcon" class="cursor-pointer absolute right-3 top-[40%] h-4 invert-[60%]">
+          <img src="{{ asset('images/close_eye.png') }}" alt="Icon" id="eyeIcon" class="tw-cursor-pointer tw-absolute tw-right-3 tw-top-[40%] tw-h-4 tw-invert-[60%]">
         </div>
-        <span class="text-red-700 text-xs mt-1 font-medium">
+        <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
           @error('password')
               {{$message}}
           @enderror
         </span>
+        <div class="tw-flex tw-items-center tw-justify-between tw-mt-5 tw-mb-5">
+          <div class="tw-flex tw-items-center">
+            <input name="remember" class="tw-cursor-pointer" type="checkbox" id="rememberMe">
+            <label class="tw-ml-1 tw-text-sm tw-text-gray-700 tw-cursor-pointer" for="rememberMe">Remember Me</label>
+          </div>
+          <div class="tw-flex tw-justify-between ">
+            <a href="" class="tw-text-sm tw-text-purple-500 tw-hover:underline tw-inline-block" >Forgot password?</a>
+          </div>
       </div>
-      <div class="flex items-center justify-between mt-5 mb-5">
-        <div class="flex items-center">
-          <input class="cursor-pointer" name="remember" type="checkbox" id="rememberMe">
-          <label class="ml-1 text-sm text-gray-700 cursor-pointer" for="rememberMe">Remember Me</label>
-        </div>
-        <div class="flex justify-between ">
-          <a href="#" class="text-sm text-purple-500 hover:underline inline-block" >Forgot password?</a>
-        </div>
-    </div>
       <button
         type="submit"
-        class="w-full py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-500 duration-200 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500"
-      >
+        id="button"
+        class="tw-w-full tw-flex tw-justify-center tw-items-center tw-py-2 tw-bg-purple-600 tw-text-white tw-font-semibold tw-rounded-lg hover:tw-bg-purple-500 tw-duration-200 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-500" 
+        >
+        <x-button-spinner/>
         Login
       </button>
     </form>
   </div>
   <script src="{{ asset('js/showLoginPassword.js')}}"></script>
+  <script src="{{ asset('js/buttonSpinner.js')}}"></script>
 </body> 
 </html>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('semester');
             $table->string('module');
             $table->string('group');
+            
         });
     }
 

@@ -5,15 +5,26 @@
 @endsection
 
 @section('content')
-<div class="mainContainer tw-flex tw-flex-row tw-justify-evenly tw-mt-44 ">
-    <img src="{{ asset('images/signup.svg') }}" alt="" class="tw-w-6/12 tw-h-[390px] tw-mt-10">
+<div class="mainContainer tw-flex tw-flex-row tw-justify-evenly tw-mt-36 ">
+    <img src="{{ asset('images/signup.svg') }}" alt="" class="tw-w-6/12 tw-h-[390px] tw-mt-20">
  {{-- Module/Subjects registration --}}
 <div class="tw-rounded-lg tw-bg-white tw-shadow-custom tw-w-2/6 tw-h-[90%]">
     <div class="tw-container tw-mx-auto tw-p-6 tw-pb-6">
         <h1 class="tw-text-xl tw-text-gray-600 tw-font-bold tw-mb-3 tw-text-center">Assign Modules</h1>
         <form action="{{route('assignModuleTeacher.store')}}" method="POST" class="tw-rounded">
             @csrf
-            <div class="tw-mb-4">
+            <div class="tw-mb-3">
+                <label for="" class="tw-block tw-text-gray-600 tw-font-bold tw-mb-2">Teacher ID</label>
+                <input type="number" placeholder="Unique teacher id" name="teacher_id" class="tw-w-full tw-p-2 tw-text-sm tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-outline-none tw-focus:ring focus:tw-border-purple-300 tw-placeholder-gray-700  @error('teacher_id')
+                    tw-border-red-700
+                @enderror">
+                <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
+                    @error('teacher_id')
+                        {{$message}}
+                    @enderror
+                  </span>
+            </div>
+            <div class="tw-mb-3">
                 <label for="" class="tw-block tw-text-gray-600 tw-font-bold tw-mb-2">Teacher Name</label>
                 <select name="teacher_name" id="teacher" class="tw-w-full tw-p-2 tw-text-sm tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm tw-focus:outline-none tw-focus:ring tw-focus:border-purple-300">
                      @foreach ($teachers as $teacher)
@@ -21,7 +32,7 @@
                      @endforeach
                 </select>
             </div>
-            <div class="tw-mb-6">
+            <div class="tw-mb-3">
                <label for="semester" class="tw-block tw-text-gray-600 tw-font-bold tw-mb-2">Choose Semester</label>
                <select name="semester" id="semester" name="semester" class="tw-w-full tw-p-2 tw-text-sm tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm tw-focus:outline-none tw-focus:ring tw-focus:border-purple-300">
                  <option value="Semester 1">Semester 1</option>
@@ -34,7 +45,7 @@
                  <option value="Semester 8">Semester 8</option>
                </select>
              </div>
-            <div class="tw-mb-4">
+            <div class="tw-mb-3">
                 <label for="" class="tw-block tw-text-gray-600 tw-font-bold tw-mb-2">Module Name</label>
                 <select name="module_name" id="module" class="tw-w-full tw-p-2 tw-text-sm tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm tw-focus:outline-none tw-focus:ring tw-focus:border-purple-300">
                   @foreach ($modules as $module)
@@ -42,7 +53,7 @@
                   @endforeach
              </select>
             </div>
-            <div class="tw-mb-4">
+            <div class="tw-mb-3">
                <label for="" class="tw-block tw-text-gray-600 tw-font-bold tw-mb-2">Group Name</label>
                <select name="group_name" id="group" class="tw-w-full tw-p-2 tw-text-sm tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm tw-focus:outline-none tw-focus:ring tw-focus:border-purple-300">
                   @foreach ($groups as $group)
