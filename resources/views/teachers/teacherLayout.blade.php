@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
+   {{-- CDN path for delete modal popup --}}
+   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   @vite('resources/css/app.css')
   @vite('resources/css/adminLayout_profile.css')
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -90,7 +92,7 @@
       </nav>
     </aside>
     <div class="tw-flex-1 tw-p-6 tw-pt-0 tw-transition-all tw-duration-700" id="mainContent">
-      <header class="tw-fixed tw-left-[256px] tw-ml-6 tw-right-[1.5rem] tw-top-3 tw-transition-all tw-duration-700 tw-bg-white tw-shadow-custom tw-py-4 tw-rounded-lg">
+      <header class="tw-z-20 tw-fixed tw-left-[256px] tw-ml-6 tw-right-[1.5rem] tw-top-3 tw-transition-all tw-duration-700 tw-bg-white tw-shadow-custom tw-py-4 tw-rounded-lg">
         <div class="tw-flex tw-flex-row tw-items-center tw-justify-between">
           <div class="tw-flex tw-items-center tw-gap-6 tw-ml-6">
             <span class="material-symbols-outlined tw-cursor-pointer tw-text-gray-600" id="menu">

@@ -86,7 +86,7 @@
       <button
         type="submit"
         id="button"
-        class="tw-w-full tw-flex tw-justify-center tw-items-center tw-py-2 tw-bg-purple-600 tw-text-white tw-font-semibold tw-rounded-lg hover:tw-bg-purple-500 tw-duration-200 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-500" 
+        class="tw-w-full tw-flex tw-justify-center tw-items-center tw-py-2 tw-bg-purple-600 tw-text-white tw-font-semibold tw-rounded-lg hover:tw-bg-purple-500 tw-duration-200" 
         >
         <x-button-spinner/>
         Login

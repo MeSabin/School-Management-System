@@ -54,4 +54,5 @@ Route::prefix('/teacher')->group(function(){
    Route::post('/students',[TeacherPagesController::class, 'getAssignedStudents'])->name('viewStudents');
    Route::get('/assignments',[TeacherPagesController::class, 'assignments'])->name('assignments');
    Route::post('/post-assignment',[TeacherPagesController::class, 'storeAssignmentDetails'])->name('postAssignment');
+   Route::delete('/delete-assignment/{id}',[TeacherPagesController::class, 'deleteAssignment'])->name('deleteAssignment');
 });

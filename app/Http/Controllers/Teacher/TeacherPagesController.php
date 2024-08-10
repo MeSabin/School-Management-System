@@ -41,7 +41,7 @@ class TeacherPagesController extends Controller
         $details = Assignment::all();
 
         if ($details->isEmpty()) {
-            $message = 'Assignment has not been posted yet';
+            $message = 'Assignment has not been posted yet!!';
             return view('teachers.assignment', compact('message', 'teachers'));
         }
         else if($details->isNotEmpty()){
@@ -51,15 +51,18 @@ class TeacherPagesController extends Controller
 
     public function storeAssignmentDetails(Request $request){
         $request->validate([
-            'file' =>'required|mimes:pdf',
-            'deadlineDate' => 'required',
+            'file' =>'required|mimes:pdf,docx,xlsx,xls',
+            'deadlineDate' => 'required|after_or_equal:today',
             'deadlineTime' => 'required',
+            'description' => 'required|max:100',
         ],
     [
         'file.required' => 'Please select a file*',
-        'file.mimes' => "Only pdf files are allowed*",
+        'file.mimes' => "Only pdf, word and excel files are allowed*",
         'deadlineDate.required' => 'Please select a date*',
+        'deadlineDate.after_or_equal' => 'Deadline date cannot be in the past*',
         'deadlineTime.required' => 'Please select the time*',
+        'description.max' => 'Description must not exceed 100 characters*'
     ]);
 
         $pdfFile = $request->file;
@@ -73,8 +76,15 @@ class TeacherPagesController extends Controller
             'file_path' =>'uploads/'.$fileName,
             'deadline_date' => $request->deadlineDate,
             'deadline_time' => $request->deadlineTime,
+            'description' => $request->description,
+            'assigned_on' => now(),
         ]);
 
         return redirect()->back()->with('assignSuccess', 'Assignment upload successful');
+    }
+
+    public function deleteAssignment(string $id){
+        Assignment::find($id)->delete();
+        return redirect()->route('assignments')->with('deleteAssignment', 'Assignment has been deleted');
     }
 }
