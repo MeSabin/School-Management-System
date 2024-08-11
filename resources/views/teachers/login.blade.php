@@ -7,19 +7,19 @@
   @vite('resources/css/app.css')
 </head>
 <body class="tw-flex tw-items-center tw-justify-center tw-min-h-screen tw-bg-gray-100">
-  @if (session('A_loginError'))
+  @if (session('T_loginError'))
     <x-alert>
       <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-red-500 tw-text-red-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
         <img src="{{ asset('images/error.png') }}" alt="" class="tw-w-6 tw-mr-2">
-        <h3>{{ session('A_loginError') }}</h3>
+        <h3>{{ session('T_loginError') }}</h3>
       </div>
     </x-alert>
   @endif
-  @if (session('A_logoutMsg'))
+  @if (session('T_logoutMsg'))
     <x-alert>
       <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-blue-500 tw-text-blue-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
         <img src="{{ asset('images/information.png') }}" alt="" class="tw-w-6 tw-mr-2">
-        <h3>{{ session('A_logoutMsg') }}</h3>
+        <h3>{{ session('T_logoutMsg') }}</h3>
       </div>
     </x-alert>
   @endif
@@ -41,7 +41,7 @@
         <input
           type="email"
           name="email"
-          class="tw-w-80 tw-px-2 tw-py-3 tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-purple-400 @error('email') tw-border-red-500 @enderror"
+          class="tw-w-80 tw-px-2 tw-py-3 tw-block tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-purple-400 @error('email') tw-border-red-500 @enderror"
           placeholder="Your email"
           @if (isset($_COOKIE['email']))  
           value="{{ $_COOKIE['email']}}"

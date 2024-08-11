@@ -25,28 +25,28 @@
       <nav class="tw-mt-4">
         <ul>
           <li>
-            <a href="{{route('teacherDash')}}" class="tw-flex tw-py-3 tw-mb-1 tw-px-3 tw-rounded-md hover:tw-bg-gray-200 tw-duration-300 {{ Route::is('') ? 'activeLink' : '' }}">
-              <span class="material-symbols-outlined tw-ml-1 tw-mr-4 tw-text-gray-600 {{ Route::is('') ? 'tw-text-purple-600' : '' }}">
+            <a href="{{route('teacherDash')}}" class="tw-flex tw-py-3 tw-mb-1 tw-px-3 tw-rounded-md hover:tw-bg-gray-200 tw-duration-300 {{ Route::is('teacherDash*') ? 'activeLink' : '' }}">
+              <span class="material-symbols-outlined tw-ml-1 tw-mr-4 tw-text-gray-600 {{ Route::is('teacherDash*') ? 'tw-text-purple-600' : '' }}">
                 home
               </span>
-              <span class="tw-text-gray-500 tw-font-semibold {{ Route::is('') ? 'tw-text-purple-600' : '' }}">Dashboard</span>
+              <span class="tw-text-gray-500 tw-font-semibold {{ Route::is('teacherDash*') ? 'tw-text-purple-600' : '' }}">Dashboard</span>
             </a>
           </li>
           <li>
             <li class="">
-              <a href="{{route('studentsSection')}}" id="students" class="tw-flex tw-py-3 tw-px-3 tw-mb-1 tw-rounded-md hover:tw-bg-gray-200 tw-duration-300 {{ Route::is('') ? 'activeLink' : '' }}">
-                <span class="tw-ml-1 tw-mr-4 material-symbols-outlined tw-text-gray-600 {{ Route::is('') ? 'tw-text-purple-600' : '' }}">
+              <a href="{{route('studentsSection')}}" id="students" class="tw-flex tw-py-3 tw-px-3 tw-mb-1 tw-rounded-md hover:tw-bg-gray-200 tw-duration-300 {{ Route::is('studentsSection*') ? 'activeLink' : '' }}">
+                <span class="tw-ml-1 tw-mr-4 material-symbols-outlined tw-text-gray-600 {{ Route::is('studentsSection*') ? 'tw-text-purple-600' : '' }}">
                   diversity_1
                 </span>
-                <span class="tw-text-gray-500 tw-font-semibold {{ Route::is('') ? 'tw-text-purple-600' : '' }}">Students</span>
+                <span class="tw-text-gray-500 tw-font-semibold {{ Route::is('studentsSection*') ? 'tw-text-purple-600' : '' }}">Students</span>
               </a>
             </li>            
             <li>
-              <a href="{{route('assignments')}}" id="curriculumns" class="tw-flex tw-items-center tw-py-3 tw-px-3 tw-mb-1 tw-rounded-md hover:tw-bg-gray-200 tw-duration-300 {{Request::is('assignments*') ? 'activeLink' : ''}}">
-                <span class="tw-ml-1 tw-mr-4 material-symbols-outlined tw-text-gray-600 {{ Request::is('assignments*') ? 'tw-text-purple-600' : '' }}">
+              <a href="{{route('assignments')}}" id="curriculumns" class="tw-flex tw-items-center tw-py-3 tw-px-3 tw-mb-1 tw-rounded-md hover:tw-bg-gray-200 tw-duration-300 {{Route::is('assignments*', 'viewSubmissions*') ? 'activeLink' : ''}}">
+                <span class="tw-ml-1 tw-mr-4 material-symbols-outlined tw-text-gray-600 {{ Route::is('assignments*', 'viewSubmissions*') ? 'tw-text-purple-600' : '' }}">
                   assignment
                 </span>
-                <span class="tw-text-gray-500 tw-font-semibold {{ Request::is('assignments*') ? 'tw-text-purple-600' : '' }}">Assignments</span>
+                <span class="tw-text-gray-500 tw-font-semibold {{ Route::is('assignments*', 'viewSubmissions*') ? 'tw-text-purple-600' : '' }}">Assignments</span>
                 {{-- <span class="dropdown material-symbols-outlined tw-text-gray-600 tw-ml-12">
                   keyboard_arrow_down
                 </span> --}}

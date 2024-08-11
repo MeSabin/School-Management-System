@@ -22,7 +22,7 @@
       </div>
     </x-alert>
 @endif
-<div class="tw-mt-40 tw-flex tw-items-center tw-justify-between">
+<div class="tw-mt-36 tw-flex tw-items-center tw-justify-between">
     <form action="{{route('postAssignment')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="tw-flex tw-gap-8">
@@ -36,7 +36,7 @@
             </div>  
             <div class="tw-rounded-md">
                 <label for="group" class="tw-block tw-text-md tw-font-bold tw-text-gray-600">Description:</label>
-                <textarea type="text" name="description" class="tw-mt-1 tw-block tw-w-[180px] tw-border tw-h-[2.4rem] tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-outline-none focus:tw-ring-purple-500 focus:tw-border-purple-500 sm:tw-text-sm @error('description')
+                <textarea type="text" name="description" value="{{old('description')}}" class="tw-mt-1 tw-block tw-w-[180px] tw-border tw-h-[2.4rem] tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-outline-none focus:tw-ring-purple-500 focus:tw-border-purple-500 sm:tw-text-sm @error('description')
                         tw-border-red-700
                     @enderror"></textarea>
                 <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
@@ -87,17 +87,23 @@
            </div>
            
            <div class="tw-rounded-md">
-               <label for="deadlineTime" class="tw-block tw-text-md tw-font-bold tw-text-gray-600">Deadline Time:</label>
-               <input type="time" name="deadlineTime" id="deadlineTime" class="tw-mt-1 tw-block tw-w-[170px] tw-p-2 tw-border tw-border-gray-300 tw-rounded-md tw-shadow-sm focus:tw-outline-none focus:tw-ring-purple-500 focus:tw-border-purple-500 sm:tw-text-sm  @error('deadlineTime')
-                    tw-border-red-700
-                @enderror">
+               <label for="deadlineTime" class="tw-block tw-text-md tw-font-bold tw-text-gray-600">Time:</label>
+                <form class="max-w-[8rem] mx-auto">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <input type="time" id="time" name="deadlineTime" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                    </div>
+                </form>
                 <span class="tw-text-red-700 tw-text-xs tw-mt-1 tw-font-medium">
                     @error('deadlineTime')
                         {{$message}}
                     @enderror
                   </span>
            </div>
-           
             <div class="">
                 <label class="tw-block tw-text-gray-600 tw-font-bold tw-text-md">Assign:</label>
                     <button type="submit" class="tw-mt-1 !important tw-bg-purple-600 hover:tw-bg-purple-700 tw-duration-300 tw-px-6 tw-py-2 hover:tw-shadow-lg tw-rounded-md tw-text-white duration-200 focus-within:tw-ring-2 focus-within:tw-ring-offset-2 focus-within:tw-ring-purple-600">Assign</button>
@@ -108,7 +114,7 @@
 
 <div class="tw-border tw-border-gray-300 tw-rounded-md tw-mt-10 tw-min-h-40 tw-p-6 tw-bg-white">
     @if(isset($message))
-    <div class="tw-flex tw-justify-center tw-items-center">
+    <div class="tw-flex tw-justify-center tw-items-center tw-mt-4">
         <img src="{{asset('images/assignment.png')}}" alt="" class="tw-w-20 tw-h-20 tw-invert-[40%] tw-mr-3">
         <p class="tw-text-blue-400 tw-font-medium tw-text-center">{{ $message }}</p>
     </div>
@@ -122,13 +128,10 @@
                     <span class="tw-text-sm tw-font-semibold tw-text-gray-500">{{ $detail->group }}</span>
                 </div> 
                 <div class="tw-text-gray-500 tw-font-semibold tw-inline-block">
-                    <a href="{{ asset('uploads/' . $detail->file_name) }}" 
-                        class="tw-text-blue-500 tw-flex tw-items-center tw-border tw-border-gray-400 tw-py-1 tw-font-medium tw-px-2 tw-rounded-md tw-text-sm hover:tw-text-blue-700" 
+                    <a href="{{$detail->file_path}}" 
+                        class="tw-text-blue-500 tw-border tw-border-gray-400 tw-py-1 tw-font-medium tw-px-2 tw-rounded-md tw-text-sm hover:tw-text-blue-700" 
                         target="_blank">
                         {{ $detail->file_name }}
-                        <span class="material-symbols-outlined tw-ml-1">
-                            attach_file
-                        </span>
                     </a>
                 </div> 
                 <div class="tw-text-gray-500 tw-font-medium tw-text-sm tw-mt-1">Assigned on: 
@@ -136,19 +139,18 @@
                 </div>
                 <div class="tw-text-gray-500 tw-font-medium tw-text-sm tw-mt-1">Deadline: 
                     <span class="tw-text-gray-500">{{ $detail->deadline_date }} {{ $detail->deadline_time }}</span>
-                    <label class="tw-bg-red-50 tw-text-red-600  tw-border-red-600 tw-px-3 tw-text-sm tw-py-1 tw-ml-2 tw-rounded-full">Closed</label>
+                    @if (@isset($available))      
+                    <label class="tw-bg-green-100 tw-text-green-600 tw-border tw-border-green-600 tw-px-3 tw-text-sm tw-py-1 tw-ml-2 tw-rounded-full">{{$available}}</label>
+                    @endif
+                    @if (@isset($closed))
+                    <label class="tw-bg-red-50 tw-text-red-600 tw-border tw-border-red-600 tw-px-3 tw-text-sm tw-py-1 tw-ml-2 tw-rounded-full">{{$closed}}</label>
+                    @endif
                 </div>
             </div>
 
             <div class="tw-flex tw-gap-10 tw-items-end">
-                <div class="tw-relative tw-inline-block">
-                    <label for="" class="tw-bg-green-600 tw-text-sm tw-absolute tw-top-[-4px] tw-right-[-5px] tw-rounded-full tw-w-5 tw-h-5 tw-text-white tw-flex tw-items-center tw-justify-center">
-                        3
-                    </label>
-
-                    <button id="button" class="tw-px-2 tw-py-2 tw-rounded-full tw-bg-purple-50 tw-text-purple-500 tw-text-sm tw-font-semibold tw-border tw-border-purple-300 tw-duration-300 hover:tw-shadow-custom_1">Submissions</button>
-                </div> 
-                <button data-modal-target="popup-modal-{{$detail->id}}" data-modal-toggle="popup-modal-{{$detail->id}}" class="delete tw-bg-red-50 tw-text-red-600 tw-border tw-border-red-600 tw-px-3 tw-font-semibold tw-text-sm tw-py-2 tw-rounded-full tw-duration-300 hover:tw-shadow-custom_1">Remove</button>
+                    <a href="{{route('viewSubmissions', $detail->id)}}" class="tw-px-2 tw-py-2 tw-rounded-lg tw-bg-purple-50 tw-text-purple-500 tw-text-sm tw-font-semibold tw-border tw-border-purple-500 tw-duration-300 hover:tw-bg-purple-600 hover:tw-text-white hover:tw-border-purple-700">Submissions</a>
+                    <button data-modal-target="popup-modal-{{$detail->id}}" data-modal-toggle="popup-modal-{{$detail->id}}" class="delete tw-bg-red-50 tw-text-red-600 tw-border tw-border-red-600 tw-px-3 tw-font-semibold tw-text-sm tw-py-2 tw-rounded-lg tw-duration-300 hover:tw-bg-red-500 hover:tw-text-white hover:tw-border-red-700">Remove</button>
 
                   @php
                       $id =$detail->id;

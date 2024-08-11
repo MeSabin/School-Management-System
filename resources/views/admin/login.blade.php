@@ -41,7 +41,7 @@
         <input
           type="email"
           name="email"
-          class="tw-w-80 tw-px-2 tw-py-3 tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-purple-400 @error('email') tw-border-red-500 @enderror"
+          class="tw-w-80 tw-px-2 tw-py-3 tw-block tw-text-xs tw-mt-1 tw-border-gray-400 tw-border tw-rounded-lg tw-focus:outline-none tw-focus:ring-1 tw-focus:ring-purple-400 @error('email') tw-border-red-500 @enderror"
           placeholder="Your email"
           @if (isset($_COOKIE['email']))  
           value="{{ $_COOKIE['email']}}"

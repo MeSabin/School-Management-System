@@ -28,5 +28,17 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('name', $teacher->name)->with('email', $teacher->email)->with('image', $teacher->image);
             }
         });
+        View::composer('admin.adminLayout', function ($view) {
+            $admin = Auth::guard('admin')->user();
+            if ($admin) {
+                $view->with('name', $admin->name)->with('email', $admin->email);
+            }
+        });
+        View::composer('students.studentLayout', function ($view) {
+            $student = Auth::guard('student')->user();
+            if ($student) {
+                $view->with('name', $student->name)->with('email', $student->email);
+            }
+        });
     }
 }

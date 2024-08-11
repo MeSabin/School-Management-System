@@ -12,7 +12,7 @@
 
 @if (session('subject'))
 <x-alert>
-  <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+  <div id="error" class="tw-opacity-0 tw-z-50 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
     <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
     <h3>{{ session('subject') }}</h3>
   </div>
@@ -21,7 +21,7 @@
 
 @if (session('subjectDetails'))
 <x-alert>
-  <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+  <div id="error" class="tw-opacity-0 tw-z-50 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-600 tw-text-green-600 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
     <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
     <h3>{{ session('subjectDetails') }}</h3>
   </div>
@@ -30,7 +30,7 @@
 
 @if (session('deleteSubject'))
 <x-alert>
-  <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-red-500 tw-text-red-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+  <div id="error" class="tw-opacity-0 tw-z-50 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-red-500 tw-text-red-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
     <img src="{{ asset('images/error.png') }}" alt="" class="tw-w-6 tw-mr-2">
     <h3>{{ session('deleteSubject') }}</h3>
   </div>

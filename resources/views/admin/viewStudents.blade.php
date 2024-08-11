@@ -13,7 +13,7 @@
 
     @if (session('addStudent'))
     <x-alert>
-      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+      <div id="error" class="tw-opacity-0 tw-z-50 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
         <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
         <h3>{{ session('addStudent') }}</h3>
       </div>
@@ -22,7 +22,7 @@
 
     @if (session('updateStudent'))
     <x-alert>
-      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+      <div id="error" class="tw-opacity-0 tw-z-50 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
         <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
         <h3>{{ session('updateStudent') }}</h3>
       </div>
@@ -31,7 +31,7 @@
 
     @if (session('delStudent'))
     <x-alert>
-      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+      <div id="error" class="tw-opacity-0 tw-z-50 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
         <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
         <h3>{{ session('delStudent') }}</h3>
       </div>
@@ -40,7 +40,7 @@
 
     @if (session('bulkSuccess'))
     <x-alert>
-      <div id="error" class="tw-opacity-0 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
+      <div id="error" class="tw-opacity-0 tw-z-50 tw-absolute tw-top-5 tw-right-5 tw-flex tw-items-center tw-justify-center tw-bg-white tw-shadow-md tw-border-2 tw-border-l-4 tw-border-green-500 tw-text-green-500 tw-pr-8 tw-pl-2 tw-py-4 tw-rounded-sm">
         <img src="{{ asset('images/accept.png') }}" alt="" class="tw-w-6 tw-mr-2">
         <h3>{{ session('bulkSuccess') }}</h3>
       </div>

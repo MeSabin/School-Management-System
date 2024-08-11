@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Teacher\validTeacher;
 use App\Http\Middleware\Admin\validAdmin;
+use App\Http\Middleware\Student\validStudent;
 use App\Http\Middleware\PreventBackHistory;
 use App\Http\Middleware\PreventLoginWithoutLogout;
 use App\Http\Controllers\Admin\AdminController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\Admin\AssignSubjectToTeacher;
 use App\Http\Controllers\Admin\Student;
 use App\Http\Controllers\Admin\BulkStudents;
 use App\Http\Controllers\Teacher\TeacherPagesController;
+use App\Http\Controllers\Student\validateStudent;
+use App\Http\Controllers\Student\StudentPagesController;
 
 
 Route::view('/', 'teachers/login')->name('teacherLogin');
@@ -55,4 +58,14 @@ Route::prefix('/teacher')->group(function(){
    Route::get('/assignments',[TeacherPagesController::class, 'assignments'])->name('assignments');
    Route::post('/post-assignment',[TeacherPagesController::class, 'storeAssignmentDetails'])->name('postAssignment');
    Route::delete('/delete-assignment/{id}',[TeacherPagesController::class, 'deleteAssignment'])->name('deleteAssignment');
+   Route::get('/view-submissions/{id}',[TeacherPagesController::class, 'viewSubmissions'])->name('viewSubmissions');
+});
+
+Route::prefix('/student')->group(function(){
+   Route::post('/login', [validateStudent::class, 'Login'])->name('checkStudentLogin');
+   Route::get('/dashboard',[validateStudent::class, 'studentDashboard'])->name('studentDashboard')->middleware(validStudent::class, PreventBackHistory::class);
+   Route::get('/logout',[validateStudent::class, 'Logout'])->name('logoutStudent');
+   Route::get('/students',[StudentPagesController::class, 'viewStudents'])->name('viewGroupStudents');
+   Route::get('/assignments',[StudentPagesController::class, 'viewAssignment'])->name('viewAssignment');
+   Route::post('/submit-assignment/{id}',[StudentPagesController::class, 'submitAssignment'])->name('submitAssignment');
 });

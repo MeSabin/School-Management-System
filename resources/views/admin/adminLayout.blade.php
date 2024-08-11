@@ -148,7 +148,7 @@
                 
             </div>
             <div id="imgDiv" class="tw-flex tw-items-center tw-space-x-4">
-              <span class="tw-text-gray-700">Welcome, </span>
+              <span class="tw-text-gray-600 tw-text-sm tw-font-semibold">{{$name}},</span>
               <img src="{{ asset('images/profile.png') }}" alt="" id="profilePic" class="tw-rounded-full tw-w-10 tw-h-10 tw-cursor-pointer">
             </div>
           </div>
@@ -161,8 +161,8 @@
   <div class="tw-flex tw-items-center tw-mb-4">
     <img src="{{ asset('images/profile.png') }}" alt="Profile" class="tw-rounded-full tw-w-10 tw-mr-2">
     <div>
-      <h3 class="tw-text-gray-600 tw-font-semibold">Admin</h3>
-      <p class="tw-text-gray-500 tw-text-[0.73rem] tw-font-semibold">kaphlesabin789@gmail.com</p>
+      <span class="tw-text-gray-600 tw-text-sm tw-font-semibold">{{$name}},</span>
+      <p class="tw-text-gray-500 tw-text-[0.73rem] tw-font-semibold">{{$email}}</p>
     </div>
   </div>
   <ul>
