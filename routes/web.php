@@ -58,7 +58,7 @@ Route::prefix('/teacher')->group(function(){
    Route::get('/assignments',[TeacherPagesController::class, 'assignments'])->name('assignments');
    Route::post('/post-assignment',[TeacherPagesController::class, 'storeAssignmentDetails'])->name('postAssignment');
    Route::delete('/delete-assignment/{id}',[TeacherPagesController::class, 'deleteAssignment'])->name('deleteAssignment');
-   Route::get('/view-submissions/{id}',[TeacherPagesController::class, 'viewSubmissions'])->name('viewSubmissions');
+   Route::get('/view-submissions/{group}/{assignment_id}',[TeacherPagesController::class, 'viewSubmissions'])->name('viewSubmissions');
 });
 
 Route::prefix('/student')->group(function(){
@@ -68,4 +68,5 @@ Route::prefix('/student')->group(function(){
    Route::get('/students',[StudentPagesController::class, 'viewStudents'])->name('viewGroupStudents');
    Route::get('/assignments',[StudentPagesController::class, 'viewAssignment'])->name('viewAssignment');
    Route::post('/submit-assignment/{id}',[StudentPagesController::class, 'submitAssignment'])->name('submitAssignment');
+   Route::put('/resubmit-assignment/{id}',[StudentPagesController::class, 'resubmitAssignment'])->name('resubmitAssignment');
 });

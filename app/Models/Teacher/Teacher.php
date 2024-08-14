@@ -12,4 +12,8 @@ class Teacher extends Authenticatable
     protected $guard ='web';
     public $timestamps =false;
     protected $guarded =[];
+
+    public function getemployedAttribute($value){
+        return date('d M Y', strtotime($value));
+    }
 }

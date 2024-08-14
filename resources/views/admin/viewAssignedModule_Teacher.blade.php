@@ -37,16 +37,16 @@
     <div id="tableContainer" class="tw-overflow-x-auto">
     </div>
     
-    <table class="tw-w-full tw-bg-white tw-border">
+    <table class="tw-w-full tw-bg-white tw-border tw-rounded-lg tw-overflow-hidden">
       <thead class="tw-bg-purple-600 tw-text-white">
         <tr class="tw-border">
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Module ID</th>
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Teacher ID</th>
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Teacher</th>
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Module Name</th>
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Semester</th>
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Group</th>
-          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-center">Action</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Module ID</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Teacher ID</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Teacher</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Module Name</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Semester</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Group</th>
+          <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">Action</th>
         </tr> 
       </thead>
       <tbody>

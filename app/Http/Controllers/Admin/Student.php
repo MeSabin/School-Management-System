@@ -99,7 +99,6 @@ class Student extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $student =Students::find($id);
         $request->validate([
             'fullName' => 'required',
             'phone' => 'required|min:10',
@@ -111,7 +110,6 @@ class Student extends Controller
             'phone.min' => 'Phone number should be of 10 digits*',
             'email.required' => 'Email filed is required*',
             'email.email' => 'Email format is invalid*',
-            'email.unique' => 'Email already exists in database*',
         ]);
         $student = Students::find($id);
         $student->name = $request->fullName;

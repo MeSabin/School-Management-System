@@ -41,24 +41,25 @@ class TeacherPagesController extends Controller
         $teachers= AssignSubjectToTeachers::where('teacher_id', $teacherId)->get();
         $details = Assignment::all();
 
+     
         if ($details->isEmpty()) {
             $message = 'Assignment has not been posted yet!!';
             return view('teachers.assignment', compact('message', 'teachers'));
         }
 
         else if($details->isNotEmpty()){
-
+        // $assignmentDetails = [];
         foreach($details as $detail){
             $deadline = $detail->deadline_date. ' '. $detail->deadline_time;
-            if(now()->greaterThan($deadline)){
-                $closed ='closed';
-                    return view('teachers.assignment', compact('details', 'teachers',  'closed'));
-            }
-            else{
-                $available ='Available';
-                return view('teachers.assignment', compact('details', 'teachers',  'available'));
-            }
+            $status = now()->greaterThan($deadline) ? 'Closed' : 'Available';
+
+            $assignmentDetails[] = [
+                'assignment' => $detail,
+                'status' => $status,
+            ];
+          
         }
+        return view('teachers.assignment', compact('assignmentDetails', 'teachers'));
         }
     }
 
@@ -107,16 +108,25 @@ class TeacherPagesController extends Controller
         return redirect()->route('assignments')->with('deleteAssignment', 'Assignment has been deleted');
     }
 
-    public function viewSubmissions(string $id){
-        $submissions = SubmitAssignment::where('assignment_id', $id)->get();
+    public function viewSubmissions($group, $assignment_id){
+        $students = Students::where('group', $group)->get();
 
-        if($submissions->isNotEmpty()){
-            return view('teachers.viewSubmissions', compact('submissions'));
-        }
-        else{
-            $assignment_status = "No one has submitted the assignment yet!";
-            return view('teachers.viewSubmissions', compact('submissions', 'assignment_status'));
-        }
+        $submission_count =0;
+        $submissions= [];
+        foreach($students as $student){
+            $submission_status = SubmitAssignment::where('student_id', $student->id)->where('assignment_id', $assignment_id)->pluck('status')->first();
+            $submission_details = SubmitAssignment::where('student_id', $student->id)->where('assignment_id', $assignment_id)->first();
 
+            if($submission_status === "Submitted"){
+                $submission_count ++;
+            }
+            $submissions [] =[
+                'students' => $student,
+                'submission_status' => $submission_status,
+                'submission_details' => $submission_details
+            ];
+            
+        }
+        return view('teachers.viewSubmissions', compact('submissions', 'submission_count'));  
     }
 }

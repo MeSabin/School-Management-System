@@ -33,27 +33,27 @@
 
 @if (session()->has('teacherViewStudents'))
 <div class="tw-bg-white tw-mt-14 tw-p-4 tw-shadow-custom tw-rounded-md">
-  <table class="tw-min-w-full tw-bg-white tw-border">
+  <table class="tw-min-w-full tw-bg-white tw-border tw-rounded-md tw-overflow-hidden">
       <thead class="tw-bg-purple-600 tw-text-white">
           <tr class="tw-border">
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">ID</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Roll</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Name</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Semester</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Group</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Email</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">ID</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">Roll</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">Name</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">Semester</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">Group</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">Email</th>
           </tr> 
       </thead>
       <tbody>
 @endif
       @foreach(session('teacherViewStudents', []) as $student)
           <tr class="hover:tw-bg-gray-100 tw-border duration-200">
-            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$student->id}}</td>
-            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$student->roll}}.</td>
-            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$student->name}}</td>
-            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$student->semester}}</td>
-            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$student->group}}</td>
-            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$student->email}}</td>
+            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-center">{{$student->id}}</td>
+            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-center">{{$student->roll}}.</td>
+            <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-center">{{$student->name}}</td>
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-center">{{$student->semester}}</td>
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-center">{{$student->group}}</td>
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-center">{{$student->email}}</td>
           </tr>
       @endforeach
       </tbody>

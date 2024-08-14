@@ -46,21 +46,22 @@
       <h2 class="tw-text-xl tw-font-bold tw-text-gray-600 tw-mb-4">All Teachers Data</h2>
       <div id="tableContainer" class="tw-overflow-x-auto">
       </div>
-      <table class="tw-min-w-full tw-bg-white tw-border">
+      <table class="tw-min-w-full tw-bg-white tw-border tw-rounded-lg tw-overflow-hidden">
         <thead class="tw-bg-purple-600 tw-text-white">
           <tr class="tw-border">
-            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">ID</th>
-            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Image</th>
-            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Name</th>
-            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Phone</th>
-            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Email</th>
-            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Role</th>
-            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Action</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">ID</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Image</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Name</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Phone</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Email</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Employed</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Role</th>
+            <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Action</th>
           </tr> 
         </thead>
         <tbody>
         @foreach ($teachers as $teacher)
-          <tr class="tw-hover:bg-gray-100 tw-border tw-duration-200">
+          <tr class="hover:tw-bg-gray-100 tw-border tw-duration-200">
             <td class="tw-py-2 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->id }}.</td>
             <td class="tw-py-1 tw-px-4">
               <img src="{{ asset('/uploads/'. $teacher->image) }}" class="tw-w-9 tw-rounded-lg tw-border tw-text-start" alt="Image"/>
@@ -68,6 +69,7 @@
             <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->name }}</td>
             <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->phone }}</td>
             <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->email }}</td>
+            <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{$teacher->employed}}</td>
             <td class="tw-py-1 tw-px-4 tw-font-medium tw-text-sm tw-text-gray-600 tw-text-start">{{ $teacher->role }}</td>
             <td class="tw-py-1 tw-px-4">
               <div class="tw-flex">

@@ -30,13 +30,13 @@
      <div id= "tableContainer" class="tw-overflow-x-auto">
      </div>
 <div class="tw-bg-white">
-   <table class="tw-w-full tw-bg-white tw-border">
+   <table class="tw-w-full tw-bg-white tw-border tw-rounded-lg tw-overflow-hidden">
       <thead class="tw-bg-purple-600 tw-text-white">
           <tr class="tw-border">
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">ID</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Group Name</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Semester</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-center">Action</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">ID</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Group Name</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Semester</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-center">Action</th>
           </tr> 
       </thead>
       <tbody>

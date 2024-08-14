@@ -65,6 +65,7 @@ class AdminController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'role' => $request->role,
+            'employed'=> now(),
             'password' => Hash::make($request->password),
             'image' => $teacherImage
         ]);

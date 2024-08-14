@@ -67,17 +67,17 @@
 @else
 @if (session()->has('bulkStudents'))
 <div class="tw-bg-white tw-mt-14 tw-p-4 tw-shadow-custom tw-rounded-md">
-  <table class="tw-min-w-full tw-bg-white tw-border">
+  <table class="tw-min-w-full tw-bg-white tw-border tw-rounded-lg tw-overflow-hidden">
       <thead class="tw-bg-purple-600 tw-text-white">
           <tr class="tw-border">
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Roll</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Name</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Semester</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Group</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Phone</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Email</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Date of Birth</th>
-              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-md tw-text-start">Action</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Roll</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Name</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Semester</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Group</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Phone</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Email</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Date of Birth</th>
+              <th class="tw-py-2 tw-px-4 tw-font-semibold tw-text-sm tw-text-start">Action</th>
           </tr> 
       </thead>
       <tbody>
